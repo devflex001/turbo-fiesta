@@ -17,7 +17,7 @@ export default function Hero() {
         
         {/* Simple Centered Content */}
         <div className="max-w-3xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-zinc-900 border border-zinc-800 text-xs font-semibold tracking-wider text-zinc-300">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-[#13110d] border border-gold-border text-xs font-semibold tracking-wider text-gold-main">
             <span>Flexible Cyber & Tech Integrations</span>
           </div>
 
@@ -34,7 +34,7 @@ export default function Hero() {
           <div className="flex justify-center pt-4">
             <button
               onClick={() => scrollToSection("calculator")}
-              className="w-full sm:w-auto px-6 py-3 rounded text-xs font-bold text-black bg-white hover:bg-zinc-200 transition-all cursor-pointer flex items-center justify-center gap-1.5 group"
+              className="w-full sm:w-auto px-6 py-3 rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b] transition-all cursor-pointer flex items-center justify-center gap-1.5 group"
             >
               Configure Solution
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />

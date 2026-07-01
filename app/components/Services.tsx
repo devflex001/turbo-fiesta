@@ -77,7 +77,7 @@ export default function Services() {
         
         {/* Title */}
         <div className="max-w-3xl mb-16 space-y-3">
-          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Capabilities</span>
+          <span className="text-xs font-bold text-gold-main uppercase tracking-widest">Capabilities</span>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">
             Flexible Engineering, Bulletproof Cyber Security
           </h2>
@@ -100,14 +100,14 @@ export default function Services() {
                   onClick={() => setActiveTab(index)}
                   className={`w-full text-left p-4 rounded border transition-all cursor-pointer ${
                     isSelected
-                      ? "bg-zinc-900 border-zinc-700 text-white"
+                      ? "bg-zinc-900 border-gold-main text-white"
                       : "bg-transparent border-transparent text-zinc-400 hover:text-zinc-200"
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <Icon className="w-4 h-4 text-zinc-450 shrink-0" />
+                    <Icon className={`w-4 h-4 shrink-0 ${isSelected ? "text-gold-main" : "text-zinc-500"}`} />
                     <div>
-                      <h3 className="font-bold text-xs uppercase tracking-wider">{service.title}</h3>
+                      <h3 className={`font-bold text-xs uppercase tracking-wider ${isSelected ? "text-gold-main" : "text-white"}`}>{service.title}</h3>
                     </div>
                   </div>
                 </button>
@@ -117,10 +117,10 @@ export default function Services() {
 
           {/* Details Content Screen */}
           <div className="lg:col-span-8">
-            <div className="bg-zinc-900 border border-zinc-800 rounded p-6 sm:p-8">
+            <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6 sm:p-8">
               
               <div className="flex items-center gap-3 border-b border-zinc-800 pb-4 mb-6">
-                <ActiveIcon className="w-5 h-5 text-white" />
+                <ActiveIcon className="w-5 h-5 text-gold-main" />
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">{services[activeTab].title}</h3>
               </div>
 
@@ -134,7 +134,7 @@ export default function Services() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {services[activeTab].features.map((feature, i) => (
                       <div key={i} className="flex items-start gap-2 text-zinc-400">
-                        <Check className="w-4 h-4 text-zinc-500 shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-gold-main shrink-0 mt-0.5" />
                         <span className="text-xs">{feature}</span>
                       </div>
                     ))}
@@ -148,7 +148,7 @@ export default function Services() {
                       const element = document.getElementById("calculator");
                       if (element) element.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="w-full sm:w-auto px-4 py-2 rounded text-xs font-bold text-zinc-350 bg-zinc-950 border border-zinc-850 hover:border-zinc-700 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full sm:w-auto px-4 py-2 rounded text-xs font-bold text-zinc-350 bg-zinc-950 border border-zinc-850 hover:border-gold-main hover:text-white transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     Configure Pricing Integration
                     <ArrowRight className="w-3.5 h-3.5" />

@@ -11,8 +11,8 @@ export default function Subscriptions() {
     {
       name: "Startup Flex",
       desc: "Perfect for pre-revenue apps, static websites, and basic monitoring needs.",
-      monthlyPrice: 19900,
-      yearlyPrice: 16900,
+      monthlyPrice: 2500,
+      yearlyPrice: 2100,
       icon: HeartHandshake,
       features: [
         "Daily database & asset backups",
@@ -26,8 +26,8 @@ export default function Subscriptions() {
     {
       name: "Growth Engine",
       desc: "For operational applications, high traffic ecommerce, and continuous scaling.",
-      monthlyPrice: 49900,
-      yearlyPrice: 41900,
+      monthlyPrice: 5900,
+      yearlyPrice: 4900,
       icon: Cpu,
       features: [
         "Real-time app error tracking alerts",
@@ -42,8 +42,8 @@ export default function Subscriptions() {
     {
       name: "Cyber Sentinel",
       desc: "Maximum security protocols, instant compliance tooling, and full support access.",
-      monthlyPrice: 99900,
-      yearlyPrice: 84900,
+      monthlyPrice: 11900,
+      yearlyPrice: 9900,
       icon: ShieldAlert,
       features: [
         "24/7 SIEM firewall threat tracking",
@@ -70,7 +70,7 @@ export default function Subscriptions() {
         
         {/* Title */}
         <div className="max-w-3xl space-y-3">
-          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Pricing</span>
+          <span className="text-xs font-bold text-gold-main uppercase tracking-widest">Pricing</span>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">
             Continuous Integration, Predictable Plans
           </h2>
@@ -84,7 +84,7 @@ export default function Subscriptions() {
               <button
                 onClick={() => setBillingCycle("monthly")}
                 className={`px-4 py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
-                  billingCycle === "monthly" ? "bg-zinc-900 text-white" : "text-zinc-500 hover:text-zinc-300"
+                  billingCycle === "monthly" ? "bg-zinc-900 text-gold-main" : "text-zinc-500 hover:text-zinc-350"
                 }`}
               >
                 Monthly
@@ -92,7 +92,7 @@ export default function Subscriptions() {
               <button
                 onClick={() => setBillingCycle("yearly")}
                 className={`px-4 py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
-                  billingCycle === "yearly" ? "bg-zinc-900 text-white" : "text-zinc-500 hover:text-zinc-300"
+                  billingCycle === "yearly" ? "bg-zinc-900 text-gold-main" : "text-zinc-500 hover:text-zinc-355"
                 }`}
               >
                 Yearly (-15%)
@@ -105,17 +105,17 @@ export default function Subscriptions() {
         <div className="p-6 rounded bg-zinc-900 border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">Payment Channels</h4>
-            <p className="text-xs text-zinc-400">All fees are collected remotely using modern digital transaction networks.</p>
+            <p className="text-xs text-zinc-450">All fees are collected remotely using modern digital transaction networks.</p>
           </div>
           <div className="relative">
             <button
               onClick={handlePaystackPress}
-              className="px-6 py-3 bg-white hover:bg-zinc-200 text-black rounded text-xs font-bold transition-colors cursor-pointer"
+              className="px-6 py-3 bg-gold-main hover:bg-[#b08e4b] text-black rounded text-xs font-bold transition-colors cursor-pointer"
             >
               We accept Paystack payments
             </button>
             {paymentNotice && (
-              <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-zinc-800 text-white text-[10px] font-mono font-bold px-3 py-1 rounded shadow border border-zinc-700 whitespace-nowrap animate-bounce">
+              <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-zinc-850 text-white text-[10px] font-mono font-bold px-3 py-1 rounded shadow border border-zinc-700 whitespace-nowrap animate-bounce">
                 Coming soon
               </span>
             )}
@@ -134,7 +134,7 @@ export default function Subscriptions() {
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <Icon className="w-5 h-5 text-white" />
+                    <Icon className="w-5 h-5 text-gold-main" />
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">{plan.name}</h3>
                   </div>
 
@@ -144,7 +144,7 @@ export default function Subscriptions() {
 
                   <div className="mt-6 mb-6 flex items-baseline">
                     <span className="text-2xl font-extrabold text-white">KSh {price.toLocaleString()}</span>
-                    <span className="text-xs text-zinc-500 ml-1.5">KES / month</span>
+                    <span className="text-xs text-zinc-500 ml-1.5 font-mono text-[10px]">KES / month</span>
                   </div>
 
                   <hr className="border-zinc-800 mb-6" />
@@ -153,7 +153,7 @@ export default function Subscriptions() {
                   <ul className="space-y-3.5 text-xs text-zinc-400">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <Check className="w-4 h-4 text-zinc-500 shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-gold-main shrink-0 mt-0.5" />
                         <span className="leading-normal">{feature}</span>
                       </li>
                     ))}

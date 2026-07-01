@@ -58,8 +58,8 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded bg-zinc-800 border border-zinc-700">
-              <Shield className="w-4 h-4 text-zinc-300" />
+            <div className="flex items-center justify-center w-8 h-8 rounded bg-zinc-900 border border-zinc-800">
+              <Shield className="w-4 h-4 text-gold-main" />
             </div>
             <span className="text-xl font-bold tracking-tight text-white">
               Bet<span className="text-zinc-400">Flexx</span>
@@ -78,7 +78,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
               >
                 {link.label}
                 {activeTab === link.id && (
-                  <span className="absolute left-0 -bottom-1.5 w-full h-[2px] bg-zinc-400" />
+                  <span className="absolute left-0 -bottom-1.5 w-full h-[2px] bg-gold-main" />
                 )}
               </button>
             ))}
@@ -91,7 +91,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                 const element = document.getElementById("contact");
                 if (element) element.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-4 py-2 rounded text-xs font-bold text-black bg-white hover:bg-zinc-200 transition-colors cursor-pointer flex items-center gap-1"
+              className="px-4 py-2 rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b] transition-colors cursor-pointer flex items-center gap-1"
             >
               Consultation <ArrowRight className="w-3.5 h-3.5" />
             </button>
@@ -137,7 +137,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }, 100);
               }}
-              className="w-full py-3 text-center rounded text-xs font-bold text-black bg-white hover:bg-zinc-200"
+              className="w-full py-3 text-center rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b]"
             >
               Get Free Consultation
             </button>

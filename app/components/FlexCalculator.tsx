@@ -13,21 +13,22 @@ interface ServiceItem {
 }
 
 export default function FlexCalculator() {
-  const [selectedServices, setSelectedServices] = useState<string[]>(["dev_web"]);
+  const [selectedServices, setSelectedServices] = useState<string[]>(["consultation"]);
   const [teamScale, setTeamScale] = useState(2);
   const [supportTier, setSupportTier] = useState<"standard" | "priority" | "mission_critical">("priority");
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
   const [showEstimateDetails, setShowEstimateDetails] = useState(false);
 
+  // Logo Creation and Consultation Fee at the top! Other prices reduced.
   const servicesList: ServiceItem[] = [
-    { id: "dev_web", name: "Custom Web Application", category: "dev", basePrice: 40000, setupPrice: 350000, description: "Bespoke React/Next.js/Node frontend & serverless infrastructure." },
-    { id: "dev_mobile", name: "Mobile App Development", category: "dev", basePrice: 60000, setupPrice: 500000, description: "iOS & Android Cross-platform Flutter / React Native build." },
-    { id: "sec_audit", name: "Cyber Auditing & Patching", category: "sec", basePrice: 25000, setupPrice: 150000, description: "Vulnerability analysis, threat model reports, and code protection." },
-    { id: "sec_siem", name: "24/7 Security Threat Monitoring", category: "sec", basePrice: 50000, setupPrice: 200000, description: "Continuous firewall scanning, DDoS shield, logging alerts." },
-    { id: "support_ops", name: "DevOps & Server Maintenance", category: "support", basePrice: 15000, setupPrice: 80000, description: "Database backups, memory scaling, domain & server optimization." },
-    { id: "support_help", name: "Help Desk Support Service", category: "support", basePrice: 20000, setupPrice: 50000, description: "Technical assistance for content changes, bug fixes, and setup support." },
     { id: "consultation", name: "Consultation Fee", category: "support", basePrice: 0, setupPrice: 500, description: "One-hour system architecture and technology scoping consultation." },
-    { id: "logo", name: "Logo Creation", category: "dev", basePrice: 0, setupPrice: 1500, description: "Sleek, high-resolution vector corporate logo design suite." }
+    { id: "logo", name: "Logo Creation", category: "dev", basePrice: 0, setupPrice: 1500, description: "Sleek, high-resolution vector corporate logo design suite." },
+    { id: "dev_web", name: "Custom Web Application", category: "dev", basePrice: 8000, setupPrice: 35000, description: "Bespoke React/Next.js/Node frontend & serverless infrastructure." },
+    { id: "dev_mobile", name: "Mobile App Development", category: "dev", basePrice: 12000, setupPrice: 50000, description: "iOS & Android Cross-platform Flutter / React Native build." },
+    { id: "sec_audit", name: "Cyber Auditing & Patching", category: "sec", basePrice: 4000, setupPrice: 15000, description: "Vulnerability analysis, threat model reports, and code protection." },
+    { id: "sec_siem", name: "24/7 Security Threat Monitoring", category: "sec", basePrice: 6000, setupPrice: 20000, description: "Continuous firewall scanning, DDoS shield, logging alerts." },
+    { id: "support_ops", name: "DevOps & Server Maintenance", category: "support", basePrice: 2000, setupPrice: 8000, description: "Database backups, memory scaling, domain & server optimization." },
+    { id: "support_help", name: "Help Desk Support Service", category: "support", basePrice: 3000, setupPrice: 5000, description: "Technical assistance for content changes, bug fixes, and setup support." }
   ];
 
   const handleToggleService = (id: string) => {
@@ -72,12 +73,12 @@ export default function FlexCalculator() {
   const { setup, monthly } = calculateCosts();
 
   return (
-    <section id="calculator" className="py-24 bg-[#09090b] border-t border-zinc-900">
+    <section id="calculator" className="py-24 bg-[#030303] border-t border-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 space-y-3">
-          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Self Service Setup</span>
+          <span className="text-xs font-bold text-gold-main uppercase tracking-widest">Self Service Setup</span>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">
             Flexible Service Configurator
           </h2>
@@ -93,9 +94,9 @@ export default function FlexCalculator() {
           <div className="lg:col-span-8 space-y-6">
             
             {/* Step 1: Select services */}
-            <div className="bg-zinc-900 border border-zinc-800 rounded p-6">
+            <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6">
               <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-zinc-400 text-xs font-mono">01</span>
+                <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-gold-main text-xs font-mono">01</span>
                 Select Core Services
               </h3>
               
@@ -108,25 +109,25 @@ export default function FlexCalculator() {
                       onClick={() => handleToggleService(service.id)}
                       className={`p-4 rounded border transition-all cursor-pointer select-none flex flex-col justify-between ${
                         isChecked
-                          ? "bg-zinc-800 border-zinc-700"
-                          : "bg-zinc-950/40 border-zinc-950 hover:border-zinc-800 hover:bg-zinc-900/20"
+                          ? "bg-zinc-900 border-gold-main"
+                          : "bg-zinc-950/40 border-transparent hover:border-zinc-800 hover:bg-zinc-900/20"
                       }`}
                     >
                       <div>
                         <div className="flex items-center justify-between gap-2">
-                          <span className="font-bold text-xs uppercase tracking-wider text-white">{service.name}</span>
+                          <span className={`font-bold text-xs uppercase tracking-wider ${isChecked ? "text-gold-main" : "text-white"}`}>{service.name}</span>
                           <input
                             type="checkbox"
                             checked={isChecked}
                             onChange={() => {}} // handled by div click
-                            className="w-4 h-4 rounded accent-zinc-500"
+                            className="w-4 h-4 rounded accent-gold-main"
                           />
                         </div>
                         <p className="text-xs text-zinc-500 mt-2 leading-relaxed">{service.description}</p>
                       </div>
                       
                       <div className="flex items-center justify-between border-t border-zinc-800/50 pt-3 mt-4 text-[10px]">
-                        <span className="text-zinc-500">Setup: <strong className="text-zinc-350">KSh {service.setupPrice.toLocaleString()}</strong></span>
+                        <span className="text-zinc-500">Setup: <strong className="text-zinc-300">KSh {service.setupPrice.toLocaleString()}</strong></span>
                         <span className="text-zinc-500">Sub: <strong className="text-white">KSh {service.basePrice.toLocaleString()}/mo</strong></span>
                       </div>
                     </div>
@@ -139,10 +140,10 @@ export default function FlexCalculator() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
               {/* Dedicated resource scale */}
-              <div className="bg-zinc-900 border border-zinc-800 rounded p-6 flex flex-col justify-between">
+              <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6 flex flex-col justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
-                    <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-zinc-400 text-xs font-mono">02</span>
+                    <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-gold-main text-xs font-mono">02</span>
                     Scale Dedicated Crew
                   </h3>
                   <p className="text-xs text-zinc-500 mb-6">
@@ -161,7 +162,7 @@ export default function FlexCalculator() {
                     step="1"
                     value={teamScale}
                     onChange={(e) => setTeamScale(Number(e.target.value))}
-                    className="w-full h-1 bg-zinc-950 rounded-lg appearance-none cursor-pointer accent-zinc-500"
+                    className="w-full h-1 bg-zinc-950 rounded-lg appearance-none cursor-pointer accent-gold-main"
                   />
                   <div className="flex justify-between text-[10px] text-zinc-650 font-mono">
                     <span>1 (Shared)</span>
@@ -172,10 +173,10 @@ export default function FlexCalculator() {
               </div>
 
               {/* Service Level Agreement */}
-              <div className="bg-zinc-900 border border-zinc-800 rounded p-6 flex flex-col justify-between">
+              <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6 flex flex-col justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
-                    <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-zinc-400 text-xs font-mono">03</span>
+                    <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-gold-main text-xs font-mono">03</span>
                     Support & SLA Tier
                   </h3>
                   <p className="text-xs text-zinc-500 mb-6">
@@ -194,12 +195,12 @@ export default function FlexCalculator() {
                       onClick={() => setSupportTier(tier.id as any)}
                       className={`w-full text-left p-2.5 rounded border transition-all text-xs flex items-center justify-between cursor-pointer ${
                         supportTier === tier.id
-                          ? "bg-zinc-800 border-zinc-700 text-white"
-                          : "bg-zinc-950/30 border-transparent text-zinc-400 hover:border-zinc-800"
+                          ? "bg-zinc-800 border-gold-main text-white"
+                          : "bg-zinc-950/30 border-transparent text-zinc-450 hover:border-zinc-800"
                       }`}
                     >
                       <div>
-                        <div className="font-bold">{tier.name}</div>
+                        <div className={`font-bold ${supportTier === tier.id ? "text-gold-main" : "text-white"}`}>{tier.name}</div>
                         <div className="text-[10px] text-zinc-550 mt-0.5">{tier.desc}</div>
                       </div>
                     </button>
@@ -213,7 +214,7 @@ export default function FlexCalculator() {
 
           {/* Pricing Calculation Display */}
           <div className="lg:col-span-4 flex">
-            <div className="bg-zinc-900 border border-zinc-800 rounded p-6 flex flex-col justify-between w-full relative overflow-hidden">
+            <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6 flex flex-col justify-between w-full relative overflow-hidden">
               
               <div className="space-y-6">
                 <div>
@@ -225,20 +226,20 @@ export default function FlexCalculator() {
                 <div className="bg-zinc-950 p-1 rounded flex border border-zinc-850">
                   <button
                     onClick={() => setBillingCycle("monthly")}
-                    className={`flex-grow text-center py-1 rounded text-xs font-bold transition-all cursor-pointer ${
-                      billingCycle === "monthly" ? "bg-zinc-900 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
+                    className={`flex-grow text-center py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
+                      billingCycle === "monthly" ? "bg-zinc-900 text-gold-main shadow-sm" : "text-zinc-500 hover:text-zinc-300"
                     }`}
                   >
                     Monthly
                   </button>
                   <button
                     onClick={() => setBillingCycle("yearly")}
-                    className={`flex-grow text-center py-1 rounded text-xs font-bold transition-all cursor-pointer relative ${
-                      billingCycle === "yearly" ? "bg-zinc-900 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
+                    className={`flex-grow text-center py-1.5 rounded text-xs font-bold transition-all cursor-pointer relative ${
+                      billingCycle === "yearly" ? "bg-zinc-900 text-gold-main shadow-sm" : "text-zinc-500 hover:text-zinc-300"
                     }`}
                   >
                     Yearly
-                    <span className="absolute -top-2 -right-1 bg-zinc-800 text-white text-[8px] px-1 py-0.5 rounded font-bold scale-90">
+                    <span className="absolute -top-2 -right-1 bg-gold-dark text-black text-[7px] px-1 py-0.5 rounded font-bold scale-90">
                       -15%
                     </span>
                   </button>
@@ -249,20 +250,20 @@ export default function FlexCalculator() {
                   <span className="text-[10px] text-zinc-550 block uppercase tracking-wider font-semibold">One-time Setup Cost</span>
                   <div className="flex items-baseline mt-1">
                     <span className="text-xl font-bold text-white">KSh {setup.toLocaleString()}</span>
-                    <span className="text-xs text-zinc-500 ml-1.5">KES</span>
+                    <span className="text-xs text-zinc-500 ml-1.5 font-mono text-[10px]">KES</span>
                   </div>
                 </div>
 
                 {/* Subscription Cost (Monthly / Yearly) */}
                 <div className="border-b border-zinc-800 pb-4">
-                  <span className="text-[10px] text-zinc-550 block uppercase tracking-wider font-semibold">
+                  <span className="text-[10px] text-zinc-555 block uppercase tracking-wider font-semibold">
                     {billingCycle === "monthly" ? "Monthly Subscription" : "Subscription (billed yearly)"}
                   </span>
                   <div className="flex items-baseline mt-1">
-                    <span className="text-2xl font-extrabold text-white">
+                    <span className="text-2xl font-extrabold text-gold-main">
                       KSh {monthly.toLocaleString()}
                     </span>
-                    <span className="text-xs text-zinc-500 ml-1.5">
+                    <span className="text-xs text-zinc-500 ml-1.5 font-mono text-[10px]">
                       KES / mo
                     </span>
                   </div>
@@ -277,7 +278,7 @@ export default function FlexCalculator() {
                     {showEstimateDetails ? "Hide breakdown" : "Show breakdown"}
                   </button>
                   {showEstimateDetails && (
-                    <div className="mt-3 bg-zinc-950 border border-zinc-850 rounded p-3 text-[10px] text-zinc-505 space-y-1.5 max-h-40 overflow-y-auto font-mono">
+                    <div className="mt-3 bg-zinc-950 border border-zinc-850 rounded p-3 text-[10px] text-zinc-500 space-y-1.5 max-h-40 overflow-y-auto font-mono">
                       <div className="flex justify-between">
                         <span>Items:</span>
                         <span className="text-zinc-300 text-right truncate max-w-[150px]">
@@ -306,12 +307,12 @@ export default function FlexCalculator() {
                       contactForm.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="w-full py-3.5 rounded text-xs font-bold text-center text-black bg-white hover:bg-zinc-200 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  className="w-full py-3.5 rounded text-xs font-bold text-center text-black bg-gold-main hover:bg-[#b08e4b] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   Book Configured Proposal
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <div className="flex justify-center items-center gap-1.5 text-[10px] text-zinc-500">
+                <div className="flex justify-center items-center gap-1.5 text-[10px] text-zinc-550">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   <span>Configuration specifications will be compiled</span>
                 </div>

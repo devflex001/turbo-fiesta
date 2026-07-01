@@ -44,7 +44,7 @@ export default function FAQ() {
         
         {/* Header */}
         <div className="text-center mb-16 space-y-2">
-          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Support</span>
+          <span className="text-xs font-bold text-gold-main uppercase tracking-widest">Support</span>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">Frequently Asked Questions</h2>
           <p className="text-zinc-400 mt-2 text-xs sm:text-sm">Everything you need to know about our flexible development and cyber operations.</p>
         </div>
@@ -60,13 +60,15 @@ export default function FAQ() {
               >
                 <button
                   onClick={() => handleToggle(index)}
-                  className="w-full flex items-center justify-between p-5 text-left text-xs sm:text-sm font-bold uppercase tracking-wider text-white hover:text-zinc-300 transition-colors focus:outline-none cursor-pointer"
+                  className={`w-full flex items-center justify-between p-5 text-left text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors focus:outline-none cursor-pointer ${
+                    isOpen ? "text-gold-main" : "text-white hover:text-gold-main"
+                  }`}
                 >
                   <span>{faq.question}</span>
                   {isOpen ? (
-                    <ChevronUp className="w-4 h-4 text-zinc-300 shrink-0" />
+                    <ChevronUp className="w-4 h-4 text-gold-main shrink-0" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-zinc-500 shrink-0" />
+                    <ChevronDown className="w-4 h-4 text-zinc-550 shrink-0" />
                   )}
                 </button>
 

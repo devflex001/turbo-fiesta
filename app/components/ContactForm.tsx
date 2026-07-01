@@ -47,7 +47,7 @@ export default function ContactForm() {
         
         {/* Header */}
         <div className="text-center mb-16 space-y-2">
-          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Inquiries</span>
+          <span className="text-xs font-bold text-gold-main uppercase tracking-widest">Inquiries</span>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">Initiate Your Flex Contract</h2>
           <p className="text-zinc-400 text-xs sm:text-sm">Tell us about your pipeline. We'll map a flexible resource budget that adapts to you.</p>
         </div>
@@ -62,22 +62,22 @@ export default function ContactForm() {
               
               <ul className="space-y-4 text-xs text-zinc-400">
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-gold-main shrink-0 mt-0.5" />
                   <span>No locked permanent scopes—scale bandwidth as goals change.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-gold-main shrink-0 mt-0.5" />
                   <span>Comprehensive security audits bundled with code milestones.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-gold-main shrink-0 mt-0.5" />
                   <span>100% remote workspace integration via our custom Slack/Portal.</span>
                 </li>
               </ul>
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded p-5 flex items-center gap-4">
-              <Activity className="w-6 h-6 text-zinc-455 shrink-0" />
+              <Activity className="w-6 h-6 text-gold-main shrink-0" />
               <div>
                 <h4 className="text-[10px] font-bold text-white uppercase tracking-widest">Average Response Time</h4>
                 <p className="text-[11px] text-zinc-500 mt-0.5">Bett's team reviews and responds in &lt; 4 hours.</p>
@@ -91,7 +91,7 @@ export default function ContactForm() {
               
               {isSubmitted ? (
                 <div className="text-center py-12 space-y-4">
-                  <div className="w-12 h-12 rounded-full border border-zinc-700 flex items-center justify-center mx-auto text-white">
+                  <div className="w-12 h-12 rounded-full border border-gold-border flex items-center justify-center mx-auto text-gold-main">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div>
@@ -112,7 +112,7 @@ export default function ContactForm() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Name"
-                        className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-zinc-700"
+                        className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-gold-main"
                       />
                     </div>
                     <div>
@@ -123,7 +123,7 @@ export default function ContactForm() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="email@example.com"
-                        className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-zinc-700"
+                        className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-gold-main"
                       />
                     </div>
                   </div>
@@ -135,13 +135,13 @@ export default function ContactForm() {
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
                       placeholder="Company"
-                      className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-zinc-700"
+                      className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-gold-main"
                     />
                   </div>
 
                   {/* Project scope selectors */}
                   <div>
-                    <label className="text-[10px] text-zinc-550 uppercase font-semibold block mb-2.5">What needs integration? (Select all that apply)</label>
+                    <label className="text-[10px] text-zinc-555 uppercase font-semibold block mb-2.5">What needs integration? (Select all that apply)</label>
                     <div className="flex flex-wrap gap-2">
                       {servicesOption.map((option) => {
                         const isSelected = scope.includes(option.id);
@@ -152,7 +152,7 @@ export default function ContactForm() {
                             onClick={() => handleScopeToggle(option.id)}
                             className={`px-3 py-1.5 rounded text-xs font-semibold border transition-all cursor-pointer ${
                               isSelected
-                                ? "bg-zinc-850 border-zinc-700 text-white"
+                                ? "bg-[#13110d] border-gold-border text-gold-main"
                                 : "bg-zinc-950 border-transparent text-zinc-500 hover:border-zinc-800"
                             }`}
                           >
@@ -165,7 +165,7 @@ export default function ContactForm() {
 
                   {/* Budget Selector */}
                   <div>
-                    <label className="text-[10px] text-zinc-550 uppercase font-semibold block mb-2.5">Approximate Project Budget Range</label>
+                    <label className="text-[10px] text-zinc-555 uppercase font-semibold block mb-2.5">Approximate Project Budget Range</label>
                     <div className="grid grid-cols-3 gap-2.5">
                       {[
                         { id: "flexible", label: "Flexible Contract" },
@@ -178,7 +178,7 @@ export default function ContactForm() {
                           onClick={() => setBudget(item.id)}
                           className={`py-2 rounded text-[10px] font-bold border cursor-pointer ${
                             budget === item.id
-                              ? "bg-zinc-850 border-zinc-700 text-white"
+                              ? "bg-[#13110d] border-gold-border text-gold-main"
                               : "bg-zinc-950 border-transparent text-zinc-500"
                           }`}
                         >
@@ -196,15 +196,15 @@ export default function ContactForm() {
                       value={details}
                       onChange={(e) => setDetails(e.target.value)}
                       placeholder="Outline your application endpoints, traffic projections, or cyber audit scope request here..."
-                      className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-[#bd00ff] resize-none"
+                      className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-gold-main resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 rounded text-xs font-bold text-black bg-white hover:bg-zinc-200 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
-                  >
+                    className="w-full py-3.5 rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  > >
                     {isSubmitting ? (
                       <>Processing proposal details...</>
                     ) : (

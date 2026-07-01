@@ -204,7 +204,7 @@ export default function ContactForm() {
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full py-3.5 rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
-                  > >
+                  >
                     {isSubmitting ? (
                       <>Processing proposal details...</>
                     ) : (

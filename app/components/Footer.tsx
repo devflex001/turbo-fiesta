@@ -5,15 +5,15 @@ import { Shield } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#09090b] border-t border-zinc-900 pt-16 pb-8 relative overflow-hidden">
+    <footer className="bg-[#030303] border-t border-zinc-900 pt-16 pb-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           
           {/* Logo & Pitch */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="flex items-center justify-center w-8 h-8 rounded bg-zinc-800 border border-zinc-700">
-                <Shield className="w-4 h-4 text-zinc-300" />
+              <div className="flex items-center justify-center w-8 h-8 rounded bg-zinc-900 border border-zinc-800">
+                <Shield className="w-4 h-4 text-gold-main" />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
                 Bet<span className="text-zinc-400">Flexx</span>
@@ -24,7 +24,7 @@ export default function Footer() {
               BetFlexx develops and operates web & mobile software solutions. Payments are collected online for software subscriptions, development services, digital products, and other technology solutions.
             </p>
 
-            <div className="text-[10px] text-zinc-600 font-mono">
+            <div className="text-[10px] text-zinc-650 font-mono">
               <span>Inspired by founder Bett & Absolute Flexibility.</span>
             </div>
           </div>
@@ -33,10 +33,10 @@ export default function Footer() {
           <div className="md:col-span-3 space-y-3.5">
             <h4 className="text-[9px] font-bold text-zinc-450 uppercase tracking-widest">Solutions System</h4>
             <ul className="space-y-2 text-xs text-zinc-500">
-              <li><a href="#services" className="hover:text-white transition-colors">Custom Development</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Cyber Threat Audits</a></li>
-              <li><a href="#calculator" className="hover:text-white transition-colors">Service Cost Configurator</a></li>
-              <li><a href="#subscriptions" className="hover:text-white transition-colors">Support Subscriptions</a></li>
+              <li><a href="#services" className="hover:text-gold-main transition-colors">Custom Development</a></li>
+              <li><a href="#services" className="hover:text-gold-main transition-colors">Cyber Threat Audits</a></li>
+              <li><a href="#calculator" className="hover:text-gold-main transition-colors">Service Cost Configurator</a></li>
+              <li><a href="#subscriptions" className="hover:text-gold-main transition-colors">Support Subscriptions</a></li>
             </ul>
           </div>
 

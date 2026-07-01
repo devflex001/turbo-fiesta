@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030303;
+  --background: #000000;
   --foreground: #f5f5f7;
   
-  --color-accent: #c5a059;
+  --color-accent: #d5a93c;
 }
 
 @theme {
-  --color-zinc-950: #030303;
-  --color-zinc-900: #0d0d0e;
-  --color-zinc-800: #1b1b1d;
-  --color-zinc-700: #2d2d30;
+  --color-zinc-950: #000000;
+  --color-zinc-900: #000000;
+  --color-zinc-800: #121212;
+  --color-zinc-700: #1a1a1a;
   --color-zinc-400: #a1a1aa;
   
-  --color-gold-light: #f6e0a4;
-  --color-gold-main: #c5a059;
-  --color-gold-dark: #8e6f32;
-  --color-gold-border: #3d3423;
+  --color-gold-light: #e6c573;
+  --color-gold-main: #d5a93c;
+  --color-gold-dark: #a67c21;
+  --color-gold-border: #4d3b14;
   
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
@@ -36,60 +36,62 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #030303;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1b1b1d;
-  border-radius: 3px;
+  background: #121212;
+  border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c5a059;
+  background: #d5a93c;
 }
 
-/* Clean UI Card standard */
+/* Clean UI Card standard - SHARP CORNERS */
 .cyber-card {
-  background: #0d0d0e;
-  border: 1px solid #1b1b1d;
+  background: #000000;
+  border: 1px solid #4d3b14;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0px;
 }
 
 .cyber-card:hover {
-  border-color: #c5a059;
-  box-shadow: 0 0 20px rgba(197, 160, 89, 0.08);
-  transform: translateY(-2px);
+  border-color: #d5a93c;
+  box-shadow: 0 0 20px rgba(213, 169, 60, 0.12);
 }
 
 /* Premium Gold Text Gradients */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #f6e0a4 0%, #c5a059 50%, #8e6f32 100%);
+  background: linear-gradient(135deg, #e6c573 0%, #d5a93c 50%, #a67c21 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Premium Gold Buttons - Sharp corners, uppercase, tracking-widest */
+/* Premium Gold Buttons - SHARP CORNERS, UPPERCASE, GLOW SHADOW */
 .btn-gold-solid {
-  background-color: #c5a059;
-  color: #000;
+  background-color: #d5a93c;
+  color: #000000;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.15em;
   border-radius: 0px;
-  box-shadow: 0 0 15px rgba(197, 160, 89, 0.22);
+  box-shadow: 0 0 15px rgba(213, 169, 60, 0.25);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #d5a93c;
 }
 
 .btn-gold-solid:hover {
-  background-color: #d4b56f;
-  box-shadow: 0 0 25px rgba(197, 160, 89, 0.4);
+  background-color: #e6c573;
+  border-color: #e6c573;
+  box-shadow: 0 0 25px rgba(213, 169, 60, 0.45);
 }
 
 .btn-gold-outline {
   background-color: transparent;
-  color: #c5a059;
-  border: 1px solid #c5a059;
+  color: #d5a93c;
+  border: 1px solid #d5a93c;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -101,10 +103,11 @@ body {
 }
 
 .btn-gold-outline:hover {
-  background-color: rgba(197, 160, 89, 0.05);
-  border-color: #f6e0a4;
-  color: #f6e0a4;
+  background-color: rgba(213, 169, 60, 0.05);
+  border-color: #e6c573;
+  color: #e6c573;
 }
+
 
 
 

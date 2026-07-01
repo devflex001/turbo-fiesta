@@ -15,7 +15,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("services");
 
   return (
-    <div className="bg-[#020205] min-h-screen text-slate-100 flex flex-col justify-between selection:bg-[#bd00ff] selection:text-white">
+    <div className="bg-[#000000] min-h-screen text-slate-100 flex flex-col justify-between selection:bg-gold-main selection:text-black">
       {/* Fixed Navigation */}
       <Navbar
         activeTab={activeTab}

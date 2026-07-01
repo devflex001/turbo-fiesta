@@ -1,79 +1,123 @@
 "use client";
 
 import React, { useState } from "react";
-import { ShieldCheck, ArrowRight } from "lucide-react";
-
-interface ServiceItem {
-  id: string;
-  name: string;
-  category: "dev" | "sec" | "support";
-  basePrice: number;
-  setupPrice: number;
-  description: string;
-}
+import { ArrowRight, ShieldCheck } from "lucide-react";
 
 export default function FlexCalculator() {
-  const [selectedServices, setSelectedServices] = useState<string[]>(["consultation"]);
-  const [teamScale, setTeamScale] = useState(2);
-  const [supportTier, setSupportTier] = useState<"standard" | "priority" | "mission_critical">("priority");
+  const [selectedServices, setSelectedServices] = useState<string[]>([
+    "consultation",
+    "logo_creation",
+  ]);
+  const [teamScale, setTeamScale] = useState(1);
+  const [supportTier, setSupportTier] = useState<"standard" | "priority" | "mission_critical">("standard");
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
   const [showEstimateDetails, setShowEstimateDetails] = useState(false);
 
-  // Logo Creation and Consultation Fee at the top! Other prices reduced.
-  const servicesList: ServiceItem[] = [
-    { id: "consultation", name: "Consultation Fee", category: "support", basePrice: 0, setupPrice: 500, description: "One-hour system architecture and technology scoping consultation." },
-    { id: "logo", name: "Logo Creation", category: "dev", basePrice: 0, setupPrice: 1500, description: "Sleek, high-resolution vector corporate logo design suite." },
-    { id: "dev_web", name: "Custom Web Application", category: "dev", basePrice: 8000, setupPrice: 35000, description: "Bespoke React/Next.js/Node frontend & serverless infrastructure." },
-    { id: "dev_mobile", name: "Mobile App Development", category: "dev", basePrice: 12000, setupPrice: 50000, description: "iOS & Android Cross-platform Flutter / React Native build." },
-    { id: "sec_audit", name: "Cyber Auditing & Patching", category: "sec", basePrice: 4000, setupPrice: 15000, description: "Vulnerability analysis, threat model reports, and code protection." },
-    { id: "sec_siem", name: "24/7 Security Threat Monitoring", category: "sec", basePrice: 6000, setupPrice: 20000, description: "Continuous firewall scanning, DDoS shield, logging alerts." },
-    { id: "support_ops", name: "DevOps & Server Maintenance", category: "support", basePrice: 2000, setupPrice: 8000, description: "Database backups, memory scaling, domain & server optimization." },
-    { id: "support_help", name: "Help Desk Support Service", category: "support", basePrice: 3000, setupPrice: 5000, description: "Technical assistance for content changes, bug fixes, and setup support." }
+  // Scaled down, prioritized pricing
+  const servicesList = [
+    {
+      id: "consultation",
+      name: "Consultation Fee",
+      description: "One-time technical architecture, system design review and milestone drafting.",
+      setupPrice: 500,
+      basePrice: 0,
+    },
+    {
+      id: "logo_creation",
+      name: "Logo Creation",
+      description: "Complete modern branding identity package, source SVGs, and responsive logo formats.",
+      setupPrice: 1500,
+      basePrice: 0,
+    },
+    {
+      id: "web_app",
+      name: "Custom Web Application",
+      description: "Agile developer sprint delivering an optimized Next.js static or dynamic web platform.",
+      setupPrice: 35000,
+      basePrice: 8000,
+    },
+    {
+      id: "mobile_app",
+      name: "Mobile App Development",
+      description: "Cross-platform iOS & Android setup built in React Native with standard digital push features.",
+      setupPrice: 50000,
+      basePrice: 12000,
+    },
+    {
+      id: "cyber_audit",
+      name: "Cyber Security Sweep",
+      description: "Full network vulnerability testing, cloud IAM audit, database sanitization and threat mapping report.",
+      setupPrice: 15000,
+      basePrice: 4000,
+    },
+    {
+      id: "threat_monitoring",
+      name: "SIEM Threat Monitoring",
+      description: "Active server security logging, real-time firewall threat tracking, and automated bot ban rules.",
+      setupPrice: 20000,
+      basePrice: 6000,
+    },
+    {
+      id: "devops_support",
+      name: "DevOps & Server Support",
+      description: "CI/CD server optimization, Docker setups, backup runs, and domain DNS configurations.",
+      setupPrice: 8000,
+      basePrice: 2000,
+    },
+    {
+      id: "helpdesk",
+      name: "App Management & Support",
+      description: "Site optimization updates, basic copy changes, and system error logs monitoring.",
+      setupPrice: 5000,
+      basePrice: 3000,
+    },
   ];
 
   const handleToggleService = (id: string) => {
     if (selectedServices.includes(id)) {
-      if (selectedServices.length > 1) {
-        setSelectedServices(selectedServices.filter((s) => s !== id));
-      }
+      setSelectedServices(selectedServices.filter((s) => s !== id));
     } else {
       setSelectedServices([...selectedServices, id]);
     }
   };
 
   const calculateCosts = () => {
-    let oneTimeSetup = 0;
-    let baseMonthly = 0;
+    let setup = 0;
+    let monthlyBase = 0;
 
-    servicesList.forEach((s) => {
-      if (selectedServices.includes(s.id)) {
-        oneTimeSetup += s.setupPrice;
-        baseMonthly += s.basePrice;
+    selectedServices.forEach((serviceId) => {
+      const service = servicesList.find((s) => s.id === serviceId);
+      if (service) {
+        setup += service.setupPrice;
+        monthlyBase += service.basePrice;
       }
     });
 
-    let supportMultiplier = 1.0;
-    if (supportTier === "priority") supportMultiplier = 1.3;
-    if (supportTier === "mission_critical") supportMultiplier = 1.7;
+    // Crew Multipliers
+    const crewMultiplier = 1 + (teamScale - 1) * 0.25;
 
-    const scaleMultiplier = 1.0 + (teamScale - 1) * 0.35;
+    // SLA Multipliers
+    let slaMultiplier = 1.0;
+    if (supportTier === "priority") slaMultiplier = 1.3;
+    if (supportTier === "mission_critical") slaMultiplier = 1.7;
 
-    let finalMonthly = baseMonthly * supportMultiplier * scaleMultiplier;
+    let monthly = monthlyBase * crewMultiplier * slaMultiplier;
 
+    // Billing cycle annual deduction
     if (billingCycle === "yearly") {
-      finalMonthly = finalMonthly * 0.85;
+      monthly = monthly * 0.85; // 15% discount
     }
 
     return {
-      setup: Math.round(oneTimeSetup),
-      monthly: Math.round(finalMonthly)
+      setup,
+      monthly: Math.round(monthly),
     };
   };
 
   const { setup, monthly } = calculateCosts();
 
   return (
-    <section id="calculator" className="py-24 bg-[#030303] border-t border-zinc-900">
+    <section id="calculator" className="py-24 bg-[#000000] border-t border-gold-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -88,15 +132,15 @@ export default function FlexCalculator() {
         </div>
 
         {/* Configurator Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Controls Panel */}
+          {/* Form Side Controls */}
           <div className="lg:col-span-8 space-y-6">
             
             {/* Step 1: Select services */}
-            <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6">
+            <div className="bg-[#000000] border border-gold-border rounded-none p-6">
               <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-gold-main text-xs font-mono">01</span>
+                <span className="flex items-center justify-center w-5 h-5 rounded-none bg-[#121212] border border-gold-border text-gold-main text-xs font-mono">01</span>
                 Select Core Services
               </h3>
               
@@ -107,10 +151,10 @@ export default function FlexCalculator() {
                     <div
                       key={service.id}
                       onClick={() => handleToggleService(service.id)}
-                      className={`p-4 rounded border transition-all cursor-pointer select-none flex flex-col justify-between ${
+                      className={`p-4 rounded-none border transition-all cursor-pointer select-none flex flex-col justify-between ${
                         isChecked
-                          ? "bg-zinc-900 border-gold-main"
-                          : "bg-zinc-950/40 border-transparent hover:border-zinc-800 hover:bg-zinc-900/20"
+                          ? "bg-[#121212] border-gold-main"
+                          : "bg-[#000000] border-gold-border/20 hover:border-gold-border hover:bg-[#121212]/30"
                       }`}
                     >
                       <div>
@@ -120,13 +164,13 @@ export default function FlexCalculator() {
                             type="checkbox"
                             checked={isChecked}
                             onChange={() => {}} // handled by div click
-                            className="w-4 h-4 rounded accent-gold-main"
+                            className="w-4 h-4 rounded-none accent-gold-main"
                           />
                         </div>
                         <p className="text-xs text-zinc-500 mt-2 leading-relaxed">{service.description}</p>
                       </div>
                       
-                      <div className="flex items-center justify-between border-t border-zinc-800/50 pt-3 mt-4 text-[10px]">
+                      <div className="flex items-center justify-between border-t border-gold-border/50 pt-3 mt-4 text-[10px]">
                         <span className="text-zinc-500">Setup: <strong className="text-zinc-300">KSh {service.setupPrice.toLocaleString()}</strong></span>
                         <span className="text-zinc-500">Sub: <strong className="text-white">KSh {service.basePrice.toLocaleString()}/mo</strong></span>
                       </div>
@@ -140,10 +184,10 @@ export default function FlexCalculator() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
               {/* Dedicated resource scale */}
-              <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6 flex flex-col justify-between">
+              <div className="bg-[#000000] border border-gold-border rounded-none p-6 flex flex-col justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
-                    <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-gold-main text-xs font-mono">02</span>
+                    <span className="flex items-center justify-center w-5 h-5 rounded-none bg-[#121212] border border-gold-border text-gold-main text-xs font-mono">02</span>
                     Scale Dedicated Crew
                   </h3>
                   <p className="text-xs text-zinc-500 mb-6">
@@ -162,7 +206,7 @@ export default function FlexCalculator() {
                     step="1"
                     value={teamScale}
                     onChange={(e) => setTeamScale(Number(e.target.value))}
-                    className="w-full h-1 bg-zinc-950 rounded-lg appearance-none cursor-pointer accent-gold-main"
+                    className="w-full h-1 bg-[#121212] border border-gold-border rounded-none appearance-none cursor-pointer accent-gold-main"
                   />
                   <div className="flex justify-between text-[10px] text-zinc-650 font-mono">
                     <span>1 (Shared)</span>
@@ -173,10 +217,10 @@ export default function FlexCalculator() {
               </div>
 
               {/* Service Level Agreement */}
-              <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6 flex flex-col justify-between">
+              <div className="bg-[#000000] border border-gold-border rounded-none p-6 flex flex-col justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
-                    <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-gold-main text-xs font-mono">03</span>
+                    <span className="flex items-center justify-center w-5 h-5 rounded-none bg-[#121212] border border-gold-border text-gold-main text-xs font-mono">03</span>
                     Support & SLA Tier
                   </h3>
                   <p className="text-xs text-zinc-500 mb-6">
@@ -193,10 +237,10 @@ export default function FlexCalculator() {
                     <button
                       key={tier.id}
                       onClick={() => setSupportTier(tier.id as any)}
-                      className={`w-full text-left p-2.5 rounded border transition-all text-xs flex items-center justify-between cursor-pointer ${
+                      className={`w-full text-left p-2.5 rounded-none border transition-all text-xs flex items-center justify-between cursor-pointer ${
                         supportTier === tier.id
-                          ? "bg-zinc-800 border-gold-main text-white"
-                          : "bg-zinc-950/30 border-transparent text-zinc-450 hover:border-zinc-800"
+                          ? "bg-[#121212] border-gold-main text-white"
+                          : "bg-[#000000] border-gold-border/20 text-zinc-450 hover:border-gold-border hover:bg-[#121212]/30"
                       }`}
                     >
                       <div>
@@ -214,39 +258,39 @@ export default function FlexCalculator() {
 
           {/* Pricing Calculation Display */}
           <div className="lg:col-span-4 flex">
-            <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6 flex flex-col justify-between w-full relative overflow-hidden">
+            <div className="bg-[#000000] border border-gold-border rounded-none p-6 flex flex-col justify-between w-full relative overflow-hidden">
               
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xs font-bold text-white uppercase tracking-widest">Scope Estimate</h3>
-                  <p className="text-[11px] text-zinc-550 mt-1">Calculated based on your selection.</p>
+                  <p className="text-[11px] text-zinc-555 mt-1">Calculated based on your selection.</p>
                 </div>
 
                 {/* Billing Toggles */}
-                <div className="bg-zinc-950 p-1 rounded flex border border-zinc-850">
+                <div className="bg-zinc-950 p-1 rounded-none flex border border-gold-border">
                   <button
                     onClick={() => setBillingCycle("monthly")}
-                    className={`flex-grow text-center py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
-                      billingCycle === "monthly" ? "bg-zinc-900 text-gold-main shadow-sm" : "text-zinc-500 hover:text-zinc-300"
+                    className={`flex-grow text-center py-1.5 rounded-none text-xs font-bold transition-all cursor-pointer ${
+                      billingCycle === "monthly" ? "bg-[#121212] text-gold-main shadow-sm" : "text-zinc-500 hover:text-zinc-300"
                     }`}
                   >
                     Monthly
                   </button>
                   <button
                     onClick={() => setBillingCycle("yearly")}
-                    className={`flex-grow text-center py-1.5 rounded text-xs font-bold transition-all cursor-pointer relative ${
-                      billingCycle === "yearly" ? "bg-zinc-900 text-gold-main shadow-sm" : "text-zinc-500 hover:text-zinc-300"
+                    className={`flex-grow text-center py-1.5 rounded-none text-xs font-bold transition-all cursor-pointer relative ${
+                      billingCycle === "yearly" ? "bg-[#121212] text-gold-main shadow-sm" : "text-zinc-500 hover:text-zinc-300"
                     }`}
                   >
                     Yearly
-                    <span className="absolute -top-2 -right-1 bg-gold-dark text-black text-[7px] px-1 py-0.5 rounded font-bold scale-90">
+                    <span className="absolute -top-2 -right-1 bg-gold-dark text-black text-[7px] px-1 py-0.5 rounded-none font-bold scale-90">
                       -15%
                     </span>
                   </button>
                 </div>
 
                 {/* Setup Cost (One-time) */}
-                <div className="border-b border-zinc-800 pb-4">
+                <div className="border-b border-gold-border pb-4">
                   <span className="text-[10px] text-zinc-550 block uppercase tracking-wider font-semibold">One-time Setup Cost</span>
                   <div className="flex items-baseline mt-1">
                     <span className="text-xl font-bold text-white">KSh {setup.toLocaleString()}</span>
@@ -255,7 +299,7 @@ export default function FlexCalculator() {
                 </div>
 
                 {/* Subscription Cost (Monthly / Yearly) */}
-                <div className="border-b border-zinc-800 pb-4">
+                <div className="border-b border-gold-border pb-4">
                   <span className="text-[10px] text-zinc-555 block uppercase tracking-wider font-semibold">
                     {billingCycle === "monthly" ? "Monthly Subscription" : "Subscription (billed yearly)"}
                   </span>
@@ -278,7 +322,7 @@ export default function FlexCalculator() {
                     {showEstimateDetails ? "Hide breakdown" : "Show breakdown"}
                   </button>
                   {showEstimateDetails && (
-                    <div className="mt-3 bg-zinc-950 border border-zinc-850 rounded p-3 text-[10px] text-zinc-500 space-y-1.5 max-h-40 overflow-y-auto font-mono">
+                    <div className="mt-3 bg-zinc-950 border border-gold-border rounded-none p-3 text-[10px] text-zinc-500 space-y-1.5 max-h-40 overflow-y-auto font-mono">
                       <div className="flex justify-between">
                         <span>Items:</span>
                         <span className="text-zinc-300 text-right truncate max-w-[150px]">
@@ -299,7 +343,7 @@ export default function FlexCalculator() {
               </div>
 
               {/* Consultation / Checkout mockup CTA */}
-              <div className="pt-6 mt-6 border-t border-zinc-800 space-y-3">
+              <div className="pt-6 mt-6 border-t border-gold-border space-y-3">
                 <button
                   onClick={() => {
                     const contactForm = document.getElementById("contact");
@@ -312,8 +356,8 @@ export default function FlexCalculator() {
                   Book Configured Proposal
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <div className="flex justify-center items-center gap-1.5 text-[10px] text-zinc-550">
-                  <ShieldCheck className="w-3.5 h-3.5" />
+                <div className="flex justify-center items-center gap-1.5 text-[10px] text-zinc-555">
+                  <ShieldCheck className="w-3.5 h-3.5 text-gold-main" />
                   <span>Configuration specifications will be compiled</span>
                 </div>
               </div>

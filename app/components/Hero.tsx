@@ -37,7 +37,7 @@ export default function Hero() {
           <div className="flex justify-center pt-6">
             <button
               onClick={() => scrollToSection("calculator")}
-              className="px-8 py-4 rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b] hover:shadow-[0_0_20px_rgba(197,160,89,0.2)] transition-all cursor-pointer flex items-center justify-center gap-2 group"
+              className="btn-gold-solid px-8 py-4 text-[10px] cursor-pointer flex items-center gap-2 group"
             >
               Configure Custom Solution
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />

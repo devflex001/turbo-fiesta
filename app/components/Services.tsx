@@ -148,7 +148,7 @@ export default function Services() {
                       const element = document.getElementById("calculator");
                       if (element) element.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="w-full sm:w-auto px-4 py-2 rounded text-xs font-bold text-zinc-350 bg-zinc-950 border border-zinc-850 hover:border-gold-main hover:text-white transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="btn-gold-outline w-full sm:w-auto px-5 py-2.5 text-[10px] cursor-pointer flex items-center gap-1.5"
                   >
                     Configure Pricing Integration
                     <ArrowRight className="w-3.5 h-3.5" />

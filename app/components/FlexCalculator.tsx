@@ -307,7 +307,7 @@ export default function FlexCalculator() {
                       contactForm.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="w-full py-3.5 rounded text-xs font-bold text-center text-black bg-gold-main hover:bg-[#b08e4b] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  className="btn-gold-solid w-full py-3.5 text-[10px] cursor-pointer flex items-center gap-1.5"
                 >
                   Book Configured Proposal
                   <ArrowRight className="w-4 h-4" />

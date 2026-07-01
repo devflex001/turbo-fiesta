@@ -45,7 +45,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         scrolled
-          ? "bg-zinc-950/95 border-b border-zinc-800 shadow-md"
+          ? "bg-zinc-950/95 border-b border-gold-border shadow-md"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -58,7 +58,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded bg-zinc-900 border border-zinc-800">
+            <div className="flex items-center justify-center w-8 h-8 rounded-none bg-zinc-900 border border-gold-border">
               <Shield className="w-4 h-4 text-gold-main" />
             </div>
             <span className="text-xl font-bold tracking-tight text-white">

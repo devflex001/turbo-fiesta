@@ -9,7 +9,8 @@ import {
   CheckCircle2,
   Clock,
   MessageSquare,
-  AlertCircle
+  AlertCircle,
+  Shield
 } from "lucide-react";
 
 export default function ClientPortal() {

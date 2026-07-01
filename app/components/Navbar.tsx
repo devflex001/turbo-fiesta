@@ -27,6 +27,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   const navLinks = [
     { id: "services", label: "Services" },
     { id: "calculator", label: "Flex Configurator" },
+    { id: "portfolio", label: "Recent Work" },
     { id: "subscriptions", label: "Pricing" },
     { id: "about", label: "Our DNA" },
     { id: "faq", label: "FAQs" },

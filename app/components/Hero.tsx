@@ -18,19 +18,18 @@ export default function Hero() {
         {/* Centered Premium Content */}
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-[#0d0d0e] border border-gold-border text-xs font-semibold tracking-wider text-gold-main uppercase">
-            <span>Flexible Cyber & Tech Integrations</span>
+            <span>Remote Software Engineering & API Integrations</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            Flexible Software &{" "}
+            We Build, Integrate &{" "}
             <span className="text-gold-gradient">
-              Tech Solutions
+              Maintain Custom Systems
             </span>
           </h1>
 
           <p className="max-w-xl mx-auto text-xs sm:text-sm text-zinc-400 leading-relaxed">
-            BetFlexx develops, operates, and integrates software solutions tailored to individuals and businesses. 
-            Calibrated for scope agility, budget efficiency, and reliable deployment support.
+            BetFlexx delivers robust software development, custom API integrations, and secure platform maintenance for businesses across East Africa.
           </p>
 
           {/* Action button */}
@@ -39,7 +38,7 @@ export default function Hero() {
               onClick={() => scrollToSection("calculator")}
               className="btn-gold-solid px-8 py-4 text-[10px] cursor-pointer flex items-center gap-2 group"
             >
-              Configure Custom Solution
+              Configure Custom Setup
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </button>
           </div>

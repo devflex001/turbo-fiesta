@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
 import FlexCalculator from "./components/FlexCalculator";
+import RecentProjects from "./components/RecentProjects";
 import Subscriptions from "./components/Subscriptions";
 import AboutUs from "./components/AboutUs";
 import FAQ from "./components/FAQ";
@@ -27,6 +28,7 @@ export default function Home() {
         <Hero />
         <Services />
         <FlexCalculator />
+        <RecentProjects />
         <Subscriptions />
         <AboutUs />
         <FAQ />

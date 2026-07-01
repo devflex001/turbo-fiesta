@@ -5,14 +5,14 @@ import { Compass, Sparkles, Flame, Sliders } from "lucide-react";
 
 export default function AboutUs() {
   return (
-    <section id="about" className="py-24 bg-[#09090b] border-t border-zinc-900">
+    <section id="about" className="py-24 bg-[#030303] border-t border-gold-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Text Column */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-zinc-900 border border-gold-border rounded text-xs text-gold-main uppercase tracking-wider font-semibold">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-zinc-900 border border-gold-border rounded-none text-xs text-gold-main uppercase tracking-wider font-semibold">
               <Sparkles className="w-3.5 h-3.5 text-gold-main" />
               <span>Behind the Tech</span>
             </div>
@@ -35,7 +35,7 @@ export default function AboutUs() {
             {/* Core Values Bullets */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
               <div className="flex gap-3">
-                <div className="p-2.5 h-10 w-10 shrink-0 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-gold-main">
+                <div className="p-2.5 h-10 w-10 shrink-0 rounded-none bg-zinc-900 border border-gold-border flex items-center justify-center text-gold-main">
                   <Compass className="w-5 h-5" />
                 </div>
                 <div>
@@ -45,7 +45,7 @@ export default function AboutUs() {
               </div>
 
               <div className="flex gap-3">
-                <div className="p-2.5 h-10 w-10 shrink-0 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-gold-main">
+                <div className="p-2.5 h-10 w-10 shrink-0 rounded-none bg-zinc-900 border border-gold-border flex items-center justify-center text-gold-main">
                   <Sliders className="w-5 h-5" />
                 </div>
                 <div>
@@ -56,12 +56,12 @@ export default function AboutUs() {
             </div>
           </div>
 
-          {/* Right Visual Column (Glassmorphic DNA Card) */}
+          {/* Right Visual Column */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="bg-zinc-900 border border-zinc-800 rounded p-6 sm:p-8 w-full max-w-[400px]">
+            <div className="bg-[#0d0d0e] border border-gold-border rounded-none p-6 sm:p-8 w-full max-w-[400px]">
               
-              <div className="flex items-center gap-3.5 mb-6 border-b border-zinc-800 pb-4">
-                <div className="p-2 bg-zinc-950 border border-zinc-850 text-gold-main rounded">
+              <div className="flex items-center gap-3.5 mb-6 border-b border-gold-border pb-4">
+                <div className="p-2 bg-zinc-950 border border-gold-border text-gold-main rounded-none">
                   <Flame className="w-5 h-5" />
                 </div>
                 <div>
@@ -71,23 +71,23 @@ export default function AboutUs() {
               </div>
 
               <div className="space-y-4 font-mono text-[11px] text-zinc-400">
-                <div className="p-3 bg-zinc-950 rounded border border-zinc-850">
+                <div className="p-3 bg-zinc-950 rounded-none border border-gold-border">
                   <span className="text-gold-main font-bold">// Philosophy</span>
                   <p className="text-zinc-350 mt-1">Flexibility is not a buzzword. It is the architectural standard. Every system must scale without locking the client into vendor traps.</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3.5 text-center">
-                  <div className="p-2.5 bg-zinc-950 rounded border border-zinc-850">
+                  <div className="p-2.5 bg-zinc-950 rounded-none border border-gold-border">
                     <span className="text-zinc-650 block text-[9px]">FOUNDED</span>
                     <span className="text-white font-bold text-xs">2023</span>
                   </div>
-                  <div className="p-2.5 bg-zinc-950 rounded border border-zinc-850">
+                  <div className="p-2.5 bg-zinc-950 rounded-none border border-gold-border">
                     <span className="text-zinc-650 block text-[9px]">CHANNELS</span>
                     <span className="text-white font-bold text-xs">Remote</span>
                   </div>
                 </div>
 
-                <div className="p-3 bg-zinc-950 rounded border border-zinc-850">
+                <div className="p-3 bg-zinc-950 rounded-none border border-gold-border">
                   <span className="text-gold-main block font-bold">// Tech Scope</span>
                   <p className="text-white mt-1">Web & Mobile Apps, Systems Integration, Cyber Auditing & Tech Support.</p>
                 </div>

@@ -65,7 +65,7 @@ export default function Subscriptions() {
   };
 
   return (
-    <section id="subscriptions" className="py-24 bg-[#0c0c0e] border-t border-zinc-900">
+    <section id="subscriptions" className="py-24 bg-[#0c0c0e] border-t border-gold-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Title */}
@@ -80,19 +80,19 @@ export default function Subscriptions() {
 
           {/* Billing Cycle Toggle */}
           <div className="pt-6 flex justify-start">
-            <div className="bg-zinc-950 p-1 rounded border border-zinc-850 inline-flex items-center gap-1">
+            <div className="bg-zinc-950 p-1 rounded-none border border-gold-border inline-flex items-center gap-1">
               <button
                 onClick={() => setBillingCycle("monthly")}
-                className={`px-4 py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
-                  billingCycle === "monthly" ? "bg-zinc-900 text-gold-main" : "text-zinc-500 hover:text-zinc-350"
+                className={`px-4 py-1.5 rounded-none text-xs font-bold transition-all cursor-pointer ${
+                  billingCycle === "monthly" ? "bg-[#1b1b1d] text-gold-main" : "text-zinc-500 hover:text-zinc-350"
                 }`}
               >
                 Monthly
               </button>
               <button
                 onClick={() => setBillingCycle("yearly")}
-                className={`px-4 py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
-                  billingCycle === "yearly" ? "bg-zinc-900 text-gold-main" : "text-zinc-500 hover:text-zinc-355"
+                className={`px-4 py-1.5 rounded-none text-xs font-bold transition-all cursor-pointer ${
+                  billingCycle === "yearly" ? "bg-[#1b1b1d] text-gold-main" : "text-zinc-500 hover:text-zinc-355"
                 }`}
               >
                 Yearly (-15%)
@@ -102,7 +102,7 @@ export default function Subscriptions() {
         </div>
 
         {/* Dynamic Alert Banner for Paystack */}
-        <div className="p-6 rounded bg-zinc-900 border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 rounded-none bg-zinc-900 border border-gold-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">Payment Channels</h4>
             <p className="text-xs text-zinc-450">All fees are collected remotely using modern digital transaction networks.</p>
@@ -110,7 +110,7 @@ export default function Subscriptions() {
           <div className="relative">
             <button
               onClick={handlePaystackPress}
-              className="px-6 py-3 bg-gold-main hover:bg-[#b08e4b] text-black rounded text-xs font-bold transition-colors cursor-pointer"
+              className="btn-gold-solid px-6 py-3 text-[10px] cursor-pointer"
             >
               We accept Paystack payments
             </button>
@@ -130,7 +130,7 @@ export default function Subscriptions() {
             return (
               <div
                 key={index}
-                className="relative flex flex-col justify-between rounded border border-zinc-850 p-6 sm:p-8 bg-zinc-900"
+                className="relative flex flex-col justify-between rounded-none border border-gold-border p-6 sm:p-8 bg-zinc-900"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4">
@@ -147,7 +147,7 @@ export default function Subscriptions() {
                     <span className="text-xs text-zinc-500 ml-1.5 font-mono text-[10px]">KES / month</span>
                   </div>
 
-                  <hr className="border-zinc-800 mb-6" />
+                  <hr className="border-gold-border mb-6" />
 
                   {/* Feature Checklist */}
                   <ul className="space-y-3.5 text-xs text-zinc-400">
@@ -161,13 +161,13 @@ export default function Subscriptions() {
                 </div>
 
                 {/* CTA Action button */}
-                <div className="mt-8 pt-4 border-t border-zinc-800">
+                <div className="mt-8 pt-4 border-t border-gold-border">
                   <button
                     onClick={() => {
                       const contactForm = document.getElementById("contact");
                       if (contactForm) contactForm.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="w-full py-2.5 rounded text-xs font-semibold text-black bg-white hover:bg-zinc-200 transition-colors cursor-pointer flex items-center justify-center gap-2"
+                    className="btn-gold-solid w-full py-3 text-[10px] cursor-pointer flex items-center justify-center gap-2"
                   >
                     {plan.cta}
                     <Send className="w-3.5 h-3.5" />

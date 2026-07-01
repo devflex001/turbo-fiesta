@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, CheckCircle2, Shield, Activity, Sparkles } from "lucide-react";
+import { Send, CheckCircle2, Activity } from "lucide-react";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -42,7 +42,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#09090b] border-t border-zinc-900">
+    <section id="contact" className="py-24 bg-[#09090b] border-t border-gold-border">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -57,7 +57,7 @@ export default function ContactForm() {
           
           {/* Left instructions block */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-zinc-900 border border-zinc-800 rounded p-5">
+            <div className="bg-zinc-900 border border-gold-border rounded-none p-5">
               <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Contract Guarantees</h3>
               
               <ul className="space-y-4 text-xs text-zinc-400">
@@ -76,18 +76,18 @@ export default function ContactForm() {
               </ul>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded p-5 flex items-center gap-4">
+            <div className="bg-zinc-900 border border-gold-border rounded-none p-5 flex items-center gap-4">
               <Activity className="w-6 h-6 text-gold-main shrink-0" />
               <div>
                 <h4 className="text-[10px] font-bold text-white uppercase tracking-widest">Average Response Time</h4>
-                <p className="text-[11px] text-zinc-500 mt-0.5">Bett's team reviews and responds in &lt; 4 hours.</p>
+                <p className="text-[11px] text-zinc-550 mt-0.5">Bett's team reviews and responds in &lt; 4 hours.</p>
               </div>
             </div>
           </div>
 
           {/* Right Form panel */}
           <div className="lg:col-span-8">
-            <div className="bg-zinc-900 border border-zinc-800 rounded p-6 sm:p-8">
+            <div className="bg-zinc-900 border border-gold-border rounded-none p-6 sm:p-8">
               
               {isSubmitted ? (
                 <div className="text-center py-12 space-y-4">
@@ -96,7 +96,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white uppercase tracking-wider">Project Draft Received</h3>
-                    <p className="text-xs text-zinc-400 mt-2 max-w-md mx-auto">
+                    <p className="text-xs text-zinc-450 mt-2 max-w-md mx-auto">
                       Thank you, <strong className="text-white">{name}</strong>. Bett and our technical integration committee have received your system specifications. We will trace back to <strong className="text-white">{email}</strong> shortly.
                     </p>
                   </div>
@@ -112,7 +112,7 @@ export default function ContactForm() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Name"
-                        className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-gold-main"
+                        className="w-full px-3.5 py-3 rounded-none bg-zinc-950 border border-gold-border text-xs text-white focus:outline-none focus:border-gold-main"
                       />
                     </div>
                     <div>
@@ -123,7 +123,7 @@ export default function ContactForm() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="email@example.com"
-                        className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-gold-main"
+                        className="w-full px-3.5 py-3 rounded-none bg-zinc-950 border border-gold-border text-xs text-white focus:outline-none focus:border-gold-main"
                       />
                     </div>
                   </div>
@@ -135,7 +135,7 @@ export default function ContactForm() {
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
                       placeholder="Company"
-                      className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-gold-main"
+                      className="w-full px-3.5 py-3 rounded-none bg-zinc-950 border border-gold-border text-xs text-white focus:outline-none focus:border-gold-main"
                     />
                   </div>
 
@@ -150,7 +150,7 @@ export default function ContactForm() {
                             key={option.id}
                             type="button"
                             onClick={() => handleScopeToggle(option.id)}
-                            className={`px-3 py-1.5 rounded text-xs font-semibold border transition-all cursor-pointer ${
+                            className={`px-3 py-1.5 rounded-none text-xs font-semibold border transition-all cursor-pointer ${
                               isSelected
                                 ? "bg-[#13110d] border-gold-border text-gold-main"
                                 : "bg-zinc-950 border-transparent text-zinc-500 hover:border-zinc-800"
@@ -176,7 +176,7 @@ export default function ContactForm() {
                           key={item.id}
                           type="button"
                           onClick={() => setBudget(item.id)}
-                          className={`py-2 rounded text-[10px] font-bold border cursor-pointer ${
+                          className={`py-2 rounded-none text-[10px] font-bold border cursor-pointer ${
                             budget === item.id
                               ? "bg-[#13110d] border-gold-border text-gold-main"
                               : "bg-zinc-950 border-transparent text-zinc-500"
@@ -196,14 +196,14 @@ export default function ContactForm() {
                       value={details}
                       onChange={(e) => setDetails(e.target.value)}
                       placeholder="Outline your application endpoints, traffic projections, or cyber audit scope request here..."
-                      className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-gold-main resize-none"
+                      className="w-full px-3.5 py-3 rounded-none bg-zinc-950 border border-gold-border text-xs text-white focus:outline-none focus:border-gold-main resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                    className="btn-gold-solid w-full py-3.5 text-[10px] cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     {isSubmitting ? (
                       <>Processing proposal details...</>

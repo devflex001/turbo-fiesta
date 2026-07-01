@@ -98,7 +98,7 @@ export default function Services() {
                 <button
                   key={index}
                   onClick={() => setActiveTab(index)}
-                  className={`w-full text-left p-4 rounded border transition-all cursor-pointer ${
+                  className={`w-full text-left p-4 rounded-none border transition-all cursor-pointer ${
                     isSelected
                       ? "bg-zinc-900 border-gold-main text-white"
                       : "bg-transparent border-transparent text-zinc-400 hover:text-zinc-200"
@@ -117,9 +117,9 @@ export default function Services() {
 
           {/* Details Content Screen */}
           <div className="lg:col-span-8">
-            <div className="bg-[#0d0d0e] border border-zinc-800 rounded p-6 sm:p-8">
+            <div className="bg-[#0d0d0e] border border-gold-border rounded-none p-6 sm:p-8">
               
-              <div className="flex items-center gap-3 border-b border-zinc-800 pb-4 mb-6">
+              <div className="flex items-center gap-3 border-b border-gold-border pb-4 mb-6">
                 <ActiveIcon className="w-5 h-5 text-gold-main" />
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">{services[activeTab].title}</h3>
               </div>
@@ -141,7 +141,7 @@ export default function Services() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="pt-4 border-t border-gold-border flex flex-col sm:flex-row items-center justify-between gap-4">
                   <span className="text-[11px] text-zinc-500">Need specific customisations? Use our calculator tool below.</span>
                   <button
                     onClick={() => {

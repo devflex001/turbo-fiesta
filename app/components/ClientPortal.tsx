@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 import {
-  Layers,
-  Shield,
   Activity,
   Send,
   PlusCircle,
@@ -44,7 +42,7 @@ export default function ClientPortal() {
     setShowPayNotice(true);
     setTimeout(() => {
       setShowPayNotice(false);
-    }, 4500);
+    }, 3000);
   };
 
   return (
@@ -54,7 +52,7 @@ export default function ClientPortal() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-zinc-800 pb-6">
           <div>
-            <span className="text-[10px] font-mono text-zinc-500 tracking-widest uppercase">Client Management Interface</span>
+            <span className="text-[10px] font-mono text-zinc-505 tracking-widest uppercase">Client Management Interface</span>
             <h2 className="text-2xl font-extrabold text-white tracking-tight mt-1">
               Client Portal Dashboard
             </h2>
@@ -80,7 +78,7 @@ export default function ClientPortal() {
           {[
             { id: "projects", label: "Milestones & Health", icon: Activity },
             { id: "tickets", label: "Support Tickets", icon: MessageSquare },
-            { id: "billing", label: "Invoices & Paystack", icon: CreditCard }
+            { id: "billing", label: "Invoices & Payments", icon: CreditCard }
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeSubTab === tab.id;
@@ -118,9 +116,9 @@ export default function ClientPortal() {
                       <div className="flex items-center justify-between text-xs">
                         <div className="flex items-center gap-2">
                           <CheckCircle2 className="w-4.5 h-4.5 text-zinc-400" />
-                          <span className="font-semibold text-zinc-300">Phase 1: Admin Dashboard Setup</span>
+                          <span className="font-semibold text-zinc-350">Phase 1: Admin Dashboard Setup</span>
                         </div>
-                        <span className="text-zinc-400 font-mono text-xs">Complete</span>
+                        <span className="text-zinc-450 font-mono text-xs">Complete</span>
                       </div>
                       <div className="w-full bg-zinc-950 h-1.5 rounded overflow-hidden">
                         <div className="bg-white h-full" style={{ width: "100%" }} />
@@ -166,15 +164,15 @@ export default function ClientPortal() {
                       <span className="text-xs font-bold text-white font-mono">18.4%</span>
                     </div>
                     <div className="p-3 bg-zinc-950 rounded border border-zinc-850">
-                      <span className="text-[9px] text-zinc-550 uppercase block">I/O Load</span>
+                      <span className="text-[9px] text-zinc-555 uppercase block">I/O Load</span>
                       <span className="text-xs font-bold text-white font-mono">4.2 MB/s</span>
                     </div>
                     <div className="p-3 bg-zinc-950 rounded border border-zinc-850">
-                      <span className="text-[9px] text-zinc-550 uppercase block">Memory</span>
+                      <span className="text-[9px] text-zinc-555 uppercase block">Memory</span>
                       <span className="text-xs font-bold text-white font-mono">1.2 / 4.0 GB</span>
                     </div>
                     <div className="p-3 bg-zinc-950 rounded border border-zinc-850">
-                      <span className="text-[9px] text-zinc-550 uppercase block">Latency</span>
+                      <span className="text-[9px] text-zinc-555 uppercase block">Latency</span>
                       <span className="text-xs font-bold text-white font-mono">14ms</span>
                     </div>
                   </div>
@@ -186,15 +184,15 @@ export default function ClientPortal() {
                 <div className="bg-zinc-900 border border-zinc-800 rounded p-5">
                   <h3 className="text-xs font-bold text-white mb-4 uppercase tracking-wider">Active Services Scope</h3>
                   <div className="space-y-3 text-xs">
-                    <div className="flex justify-between items-center bg-zinc-950 p-2.5 rounded border border-zinc-850">
+                    <div className="flex justify-between items-center bg-zinc-950 p-2.5 rounded border border-zinc-855">
                       <span className="text-zinc-400">Growth Support Standby</span>
                       <span className="text-white font-semibold">Active</span>
                     </div>
-                    <div className="flex justify-between items-center bg-zinc-950 p-2.5 rounded border border-zinc-850">
+                    <div className="flex justify-between items-center bg-zinc-950 p-2.5 rounded border border-zinc-855">
                       <span className="text-zinc-400">Shield threat monitoring</span>
                       <span className="text-white font-semibold">Active</span>
                     </div>
-                    <div className="flex justify-between items-center bg-zinc-950 p-2.5 rounded border border-zinc-850">
+                    <div className="flex justify-between items-center bg-zinc-950 p-2.5 rounded border border-zinc-855">
                       <span className="text-zinc-400">Assigned Tech Crew</span>
                       <span className="text-white font-semibold">2 Developers</span>
                     </div>
@@ -225,17 +223,17 @@ export default function ClientPortal() {
                         value={newTicketSubject}
                         onChange={(e) => setNewTicketSubject(e.target.value)}
                         placeholder="e.g. Setup SSL cert renewal config"
-                        className="w-full px-3 py-2.5 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-zinc-700"
+                        className="w-full px-3 py-2.5 rounded bg-zinc-950 border border-zinc-855 text-xs text-white focus:outline-none focus:border-zinc-700"
                       />
                     </div>
 
                     <div>
-                      <label className="text-[9px] text-zinc-550 uppercase font-semibold block mb-1">Severity / Priority</label>
+                      <label className="text-[9px] text-zinc-555 uppercase font-semibold block mb-1">Severity / Priority</label>
                       <div className="flex gap-2">
                         {["Low", "Medium", "High"].map((p) => (
                           <button
                             key={p}
-                            type="button;submit"
+                            type="button"
                             onClick={() => setNewTicketPriority(p)}
                             className={`flex-grow py-2 text-[10px] font-bold rounded border cursor-pointer ${
                               newTicketPriority === p
@@ -323,31 +321,32 @@ export default function ClientPortal() {
                     <div className="flex items-center gap-4">
                       <div className="text-right">
                         <span className="text-[10px] text-zinc-500 block">Total Due:</span>
-                        <span className="text-sm font-bold text-white">$499.00 USD</span>
+                        <span className="text-sm font-bold text-white">KSh 49,900 KES</span>
                       </div>
                       <div className="relative">
                         <button
                           onClick={handleOpenPay}
                           className="px-4 py-2 bg-white hover:bg-zinc-200 text-black text-xs font-bold rounded cursor-pointer transition-colors"
                         >
-                          Pay Invoice
+                          We accept Paystack payments
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  {/* Payment Info Card */}
-                  <div className="p-4 rounded border border-dashed border-zinc-800 bg-zinc-950/20 text-xs text-zinc-400 space-y-2">
-                    <div className="flex items-center gap-2 font-bold text-white">
-                      <Shield className="w-4 h-4" /> Paystack Merchant Channel
+                  {{/* Payment Info Card */}
+                  showPayNotice && (
+                    <div className="p-3 bg-zinc-950 border border-zinc-850 rounded text-white font-mono text-xs flex items-center gap-2 animate-bounce">
+                      <AlertCircle className="w-4 h-4 text-zinc-400" />
+                      <span>Coming soon</span>
                     </div>
-                    <p>We accept Paystack payments. Settle software subscriptions or custom engineering milestone payments securely remote.</p>
-                    {showPayNotice && (
-                      <div className="p-3 bg-zinc-900 border border-zinc-850 rounded text-white font-mono text-xs flex items-center gap-2 animate-bounce mt-2">
-                        <AlertCircle className="w-4 h-4 text-zinc-400" />
-                        <span>Paystack Checkout Gateway: Coming soon</span>
-                      </div>
-                    )}
+                  )}
+
+                  <div className="p-4 rounded border border-dashed border-zinc-800 bg-zinc-950/20 text-xs text-zinc-450 space-y-2">
+                    <div className="flex items-center gap-2 font-bold text-white">
+                      <CreditCard className="w-4 h-4 text-zinc-400" /> Merchant Verification
+                    </div>
+                    <p>We accept Paystack payments for all development contracts and SaaS licenses.</p>
                   </div>
                 </div>
               </div>
@@ -356,9 +355,9 @@ export default function ClientPortal() {
               <div className="lg:col-span-4">
                 <div className="bg-zinc-900 border border-zinc-800 rounded p-5 space-y-4">
                   <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-zinc-400" /> PCI Verification
+                    <Shield className="w-4 h-4 text-zinc-400" /> Security Verifications
                   </h3>
-                  <p className="text-xs text-zinc-500 leading-relaxed">
+                  <p className="text-xs text-zinc-505 leading-relaxed">
                     Online gateways protect transactions using secure encryption tunnels. BetFlexx stores no credential logs on internal server resources.
                   </p>
                 </div>

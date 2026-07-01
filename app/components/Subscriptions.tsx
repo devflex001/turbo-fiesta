@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check, ShieldAlert, Cpu, HeartHandshake, Sparkles, Send } from "lucide-react";
+import { Check, ShieldAlert, Cpu, HeartHandshake, Send } from "lucide-react";
 
 export default function Subscriptions() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
@@ -11,8 +11,8 @@ export default function Subscriptions() {
     {
       name: "Startup Flex",
       desc: "Perfect for pre-revenue apps, static websites, and basic monitoring needs.",
-      monthlyPrice: 199,
-      yearlyPrice: 169,
+      monthlyPrice: 19900,
+      yearlyPrice: 16900,
       icon: HeartHandshake,
       features: [
         "Daily database & asset backups",
@@ -26,8 +26,8 @@ export default function Subscriptions() {
     {
       name: "Growth Engine",
       desc: "For operational applications, high traffic ecommerce, and continuous scaling.",
-      monthlyPrice: 499,
-      yearlyPrice: 419,
+      monthlyPrice: 49900,
+      yearlyPrice: 41900,
       icon: Cpu,
       features: [
         "Real-time app error tracking alerts",
@@ -42,8 +42,8 @@ export default function Subscriptions() {
     {
       name: "Cyber Sentinel",
       desc: "Maximum security protocols, instant compliance tooling, and full support access.",
-      monthlyPrice: 999,
-      yearlyPrice: 849,
+      monthlyPrice: 99900,
+      yearlyPrice: 84900,
       icon: ShieldAlert,
       features: [
         "24/7 SIEM firewall threat tracking",
@@ -66,10 +66,10 @@ export default function Subscriptions() {
 
   return (
     <section id="subscriptions" className="py-24 bg-[#0c0c0e] border-t border-zinc-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Title */}
-        <div className="max-w-3xl mb-16 space-y-3">
+        <div className="max-w-3xl space-y-3">
           <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Pricing</span>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">
             Continuous Integration, Predictable Plans
@@ -102,21 +102,21 @@ export default function Subscriptions() {
         </div>
 
         {/* Dynamic Alert Banner for Paystack */}
-        <div className="mb-10 p-5 rounded bg-zinc-900 border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 rounded bg-zinc-900 border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">Payment Operations Gateway</h4>
-            <p className="text-xs text-zinc-400">We accept Paystack payments. Subscriptions and custom integration invoices can be settled via Paystack channels.</p>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">Payment Channels</h4>
+            <p className="text-xs text-zinc-400">All fees are collected remotely using modern digital transaction networks.</p>
           </div>
           <div className="relative">
             <button
               onClick={handlePaystackPress}
-              className="px-5 py-2.5 bg-zinc-950 hover:bg-zinc-900 border border-zinc-800 text-zinc-300 rounded text-xs font-bold transition-colors cursor-pointer"
+              className="px-6 py-3 bg-white hover:bg-zinc-200 text-black rounded text-xs font-bold transition-colors cursor-pointer"
             >
-              Configure Paystack
+              We accept Paystack payments
             </button>
             {paymentNotice && (
               <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-zinc-800 text-white text-[10px] font-mono font-bold px-3 py-1 rounded shadow border border-zinc-700 whitespace-nowrap animate-bounce">
-                Paystack Integration: Coming soon
+                Coming soon
               </span>
             )}
           </div>
@@ -143,8 +143,8 @@ export default function Subscriptions() {
                   </p>
 
                   <div className="mt-6 mb-6 flex items-baseline">
-                    <span className="text-3xl font-extrabold text-white">${price}</span>
-                    <span className="text-xs text-zinc-500 ml-1.5">USD / month</span>
+                    <span className="text-2xl font-extrabold text-white">KSh {price.toLocaleString()}</span>
+                    <span className="text-xs text-zinc-500 ml-1.5">KES / month</span>
                   </div>
 
                   <hr className="border-zinc-800 mb-6" />

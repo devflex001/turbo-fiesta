@@ -169,8 +169,8 @@ export default function ContactForm() {
                     <div className="grid grid-cols-3 gap-2.5">
                       {[
                         { id: "flexible", label: "Flexible Contract" },
-                        { id: "mid", label: "$5K - $15K Setup" },
-                        { id: "high", label: "$15K+ Custom Build" }
+                        { id: "mid", label: "KSh 500K - 1.5M Setup" },
+                        { id: "high", label: "KSh 1.5M+ Custom Build" }
                       ].map((item) => (
                         <button
                           key={item.id}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ShieldCheck, HelpCircle, Activity, HeartHandshake, ArrowRight, Sparkles } from "lucide-react";
+import { ShieldCheck, ArrowRight } from "lucide-react";
 
 interface ServiceItem {
   id: string;
@@ -20,12 +20,12 @@ export default function FlexCalculator() {
   const [showEstimateDetails, setShowEstimateDetails] = useState(false);
 
   const servicesList: ServiceItem[] = [
-    { id: "dev_web", name: "Custom Web Application", category: "dev", basePrice: 400, setupPrice: 3500, description: "Bespoke React/Next.js/Node frontend & serverless infrastructure." },
-    { id: "dev_mobile", name: "Mobile App Development", category: "dev", basePrice: 600, setupPrice: 5000, description: "iOS & Android Cross-platform Flutter / React Native build." },
-    { id: "sec_audit", name: "Cyber Auditing & Patching", category: "sec", basePrice: 250, setupPrice: 1500, description: "Vulnerability analysis, threat model reports, and code protection." },
-    { id: "sec_siem", name: "24/7 Security Threat Monitoring", category: "sec", basePrice: 500, setupPrice: 2000, description: "Continuous firewall scanning, DDoS shield, logging alerts." },
-    { id: "support_ops", name: "DevOps & Server Maintenance", category: "support", basePrice: 150, setupPrice: 800, description: "Database backups, memory scaling, domain & server optimization." },
-    { id: "support_help", name: "Help Desk Support Service", category: "support", basePrice: 200, setupPrice: 500, description: "Technical assistance for content changes, bug fixes, and setup support." }
+    { id: "dev_web", name: "Custom Web Application", category: "dev", basePrice: 40000, setupPrice: 350000, description: "Bespoke React/Next.js/Node frontend & serverless infrastructure." },
+    { id: "dev_mobile", name: "Mobile App Development", category: "dev", basePrice: 60000, setupPrice: 500000, description: "iOS & Android Cross-platform Flutter / React Native build." },
+    { id: "sec_audit", name: "Cyber Auditing & Patching", category: "sec", basePrice: 25000, setupPrice: 150000, description: "Vulnerability analysis, threat model reports, and code protection." },
+    { id: "sec_siem", name: "24/7 Security Threat Monitoring", category: "sec", basePrice: 50000, setupPrice: 200000, description: "Continuous firewall scanning, DDoS shield, logging alerts." },
+    { id: "support_ops", name: "DevOps & Server Maintenance", category: "support", basePrice: 15000, setupPrice: 80000, description: "Database backups, memory scaling, domain & server optimization." },
+    { id: "support_help", name: "Help Desk Support Service", category: "support", basePrice: 20000, setupPrice: 50000, description: "Technical assistance for content changes, bug fixes, and setup support." }
   ];
 
   const handleToggleService = (id: string) => {
@@ -124,8 +124,8 @@ export default function FlexCalculator() {
                       </div>
                       
                       <div className="flex items-center justify-between border-t border-zinc-800/50 pt-3 mt-4 text-[10px]">
-                        <span className="text-zinc-500">Setup: <strong className="text-zinc-300">${service.setupPrice}</strong></span>
-                        <span className="text-zinc-500">Subscription: <strong className="text-white">${service.basePrice}/mo</strong></span>
+                        <span className="text-zinc-500">Setup: <strong className="text-zinc-350">KSh {service.setupPrice.toLocaleString()}</strong></span>
+                        <span className="text-zinc-500">Sub: <strong className="text-white">KSh {service.basePrice.toLocaleString()}/mo</strong></span>
                       </div>
                     </div>
                   );
@@ -246,8 +246,8 @@ export default function FlexCalculator() {
                 <div className="border-b border-zinc-800 pb-4">
                   <span className="text-[10px] text-zinc-550 block uppercase tracking-wider font-semibold">One-time Setup Cost</span>
                   <div className="flex items-baseline mt-1">
-                    <span className="text-xl font-bold text-white">${setup.toLocaleString()}</span>
-                    <span className="text-xs text-zinc-500 ml-1.5">USD</span>
+                    <span className="text-xl font-bold text-white">KSh {setup.toLocaleString()}</span>
+                    <span className="text-xs text-zinc-500 ml-1.5">KES</span>
                   </div>
                 </div>
 
@@ -257,11 +257,11 @@ export default function FlexCalculator() {
                     {billingCycle === "monthly" ? "Monthly Subscription" : "Subscription (billed yearly)"}
                   </span>
                   <div className="flex items-baseline mt-1">
-                    <span className="text-3xl font-extrabold text-white">
-                      ${monthly.toLocaleString()}
+                    <span className="text-2xl font-extrabold text-white">
+                      KSh {monthly.toLocaleString()}
                     </span>
                     <span className="text-xs text-zinc-500 ml-1.5">
-                      USD / mo
+                      KES / mo
                     </span>
                   </div>
                 </div>
@@ -275,7 +275,7 @@ export default function FlexCalculator() {
                     {showEstimateDetails ? "Hide breakdown" : "Show breakdown"}
                   </button>
                   {showEstimateDetails && (
-                    <div className="mt-3 bg-zinc-950 border border-zinc-850 rounded p-3 text-[10px] text-zinc-500 space-y-1.5 max-h-40 overflow-y-auto font-mono">
+                    <div className="mt-3 bg-zinc-950 border border-zinc-850 rounded p-3 text-[10px] text-zinc-505 space-y-1.5 max-h-40 overflow-y-auto font-mono">
                       <div className="flex justify-between">
                         <span>Items:</span>
                         <span className="text-zinc-300 text-right truncate max-w-[150px]">
@@ -310,7 +310,7 @@ export default function FlexCalculator() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <div className="flex justify-center items-center gap-1.5 text-[10px] text-zinc-500">
-                  <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
+                  <ShieldCheck className="w-3.5 h-3.5" />
                   <span>Configuration specifications will be compiled</span>
                 </div>
               </div>

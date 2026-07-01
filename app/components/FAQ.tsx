@@ -39,7 +39,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-[#0c0c0e] border-t border-zinc-900">
+    <section id="faq" className="py-24 bg-[#0c0c0e] border-t border-gold-border">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -56,7 +56,7 @@ export default function FAQ() {
             return (
               <div
                 key={index}
-                className="bg-zinc-900 border border-zinc-850 rounded overflow-hidden"
+                className="bg-zinc-900 border border-gold-border rounded-none overflow-hidden"
               >
                 <button
                   onClick={() => handleToggle(index)}

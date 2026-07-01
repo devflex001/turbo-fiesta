@@ -25,7 +25,9 @@ export default function FlexCalculator() {
     { id: "sec_audit", name: "Cyber Auditing & Patching", category: "sec", basePrice: 25000, setupPrice: 150000, description: "Vulnerability analysis, threat model reports, and code protection." },
     { id: "sec_siem", name: "24/7 Security Threat Monitoring", category: "sec", basePrice: 50000, setupPrice: 200000, description: "Continuous firewall scanning, DDoS shield, logging alerts." },
     { id: "support_ops", name: "DevOps & Server Maintenance", category: "support", basePrice: 15000, setupPrice: 80000, description: "Database backups, memory scaling, domain & server optimization." },
-    { id: "support_help", name: "Help Desk Support Service", category: "support", basePrice: 20000, setupPrice: 50000, description: "Technical assistance for content changes, bug fixes, and setup support." }
+    { id: "support_help", name: "Help Desk Support Service", category: "support", basePrice: 20000, setupPrice: 50000, description: "Technical assistance for content changes, bug fixes, and setup support." },
+    { id: "consultation", name: "Consultation Fee", category: "support", basePrice: 0, setupPrice: 500, description: "One-hour system architecture and technology scoping consultation." },
+    { id: "logo", name: "Logo Creation", category: "dev", basePrice: 0, setupPrice: 1500, description: "Sleek, high-resolution vector corporate logo design suite." }
   ];
 
   const handleToggleService = (id: string) => {

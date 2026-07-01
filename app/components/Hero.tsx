@@ -1,13 +1,9 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, ShieldCheck, Activity, Terminal } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-interface HeroProps {
-  setShowPortal: (show: boolean) => void;
-}
-
-export default function Hero({ setShowPortal }: HeroProps) {
+export default function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -35,19 +31,13 @@ export default function Hero({ setShowPortal }: HeroProps) {
           </p>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+          <div className="flex justify-center pt-4">
             <button
               onClick={() => scrollToSection("calculator")}
               className="w-full sm:w-auto px-6 py-3 rounded text-xs font-bold text-black bg-white hover:bg-zinc-200 transition-all cursor-pointer flex items-center justify-center gap-1.5 group"
             >
               Configure Solution
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
-            <button
-              onClick={() => setShowPortal(true)}
-              className="w-full sm:w-auto px-6 py-3 rounded text-xs font-bold text-zinc-300 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 transition-all cursor-pointer"
-            >
-              Client Portal Dashboard
             </button>
           </div>
 

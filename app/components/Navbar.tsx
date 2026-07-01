@@ -1,16 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Shield, Menu, X, ArrowRight, LayoutDashboard } from "lucide-react";
+import { Shield, Menu, X, ArrowRight } from "lucide-react";
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  showPortal: boolean;
-  setShowPortal: (show: boolean) => void;
 }
 
-export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPortal }: NavbarProps) {
+export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -35,7 +33,6 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
   ];
 
   const handleNavClick = (id: string) => {
-    setShowPortal(false);
     setActiveTab(id);
     setIsOpen(false);
     const element = document.getElementById(id);
@@ -58,7 +55,6 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
           <div
             className="flex items-center space-x-2 cursor-pointer group"
             onClick={() => {
-              setShowPortal(false);
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
@@ -72,56 +68,28 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {!showPortal &&
-              navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => handleNavClick(link.id)}
-                  className={`text-sm font-medium transition-colors hover:text-white cursor-pointer ${
-                    activeTab === link.id ? "text-white relative" : "text-zinc-400"
-                  }`}
-                >
-                  {link.label}
-                  {activeTab === link.id && (
-                    <span className="absolute left-0 -bottom-1.5 w-full h-[2px] bg-zinc-400" />
-                  )}
-                </button>
-              ))}
-            {showPortal && (
+            {navLinks.map((link) => (
               <button
-                onClick={() => {
-                  setShowPortal(false);
-                  setTimeout(() => {
-                    handleNavClick("services");
-                  }, 100);
-                }}
-                className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+                key={link.id}
+                onClick={() => handleNavClick(link.id)}
+                className={`text-sm font-medium transition-colors hover:text-white cursor-pointer ${
+                  activeTab === link.id ? "text-white relative" : "text-zinc-400"
+                }`}
               >
-                ← Back to Landing Page
+                {link.label}
+                {activeTab === link.id && (
+                  <span className="absolute left-0 -bottom-1.5 w-full h-[2px] bg-zinc-400" />
+                )}
               </button>
-            )}
+            ))}
           </div>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <button
-              onClick={() => setShowPortal(!showPortal)}
-              className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-semibold border transition-all duration-200 cursor-pointer ${
-                showPortal
-                  ? "bg-zinc-800 border-zinc-700 text-white"
-                  : "bg-transparent border-zinc-850 text-zinc-400 hover:border-zinc-800 hover:text-zinc-200"
-              }`}
-            >
-              <LayoutDashboard className="w-3.5 h-3.5" />
-              {showPortal ? "Exit Portal" : "Client Portal"}
-            </button>
-            <button
               onClick={() => {
-                setShowPortal(false);
-                setTimeout(() => {
-                  const element = document.getElementById("contact");
-                  if (element) element.scrollIntoView({ behavior: "smooth" });
-                }, 100);
+                const element = document.getElementById("contact");
+                if (element) element.scrollIntoView({ behavior: "smooth" });
               }}
               className="px-4 py-2 rounded text-xs font-bold text-black bg-white hover:bg-zinc-200 transition-colors cursor-pointer flex items-center gap-1"
             >
@@ -148,44 +116,21 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
         }`}
       >
         <div className="px-2 pt-2 pb-6 space-y-2 sm:px-3 flex flex-col items-stretch">
-          {!showPortal &&
-            navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => handleNavClick(link.id)}
-                className={`block text-left px-3 py-3 rounded-md text-base font-medium transition-colors hover:bg-zinc-900 ${
-                  activeTab === link.id ? "text-white bg-zinc-900" : "text-zinc-400 hover:text-white"
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-          {showPortal && (
+          {navLinks.map((link) => (
             <button
-              onClick={() => {
-                setShowPortal(false);
-                setIsOpen(false);
-              }}
-              className="block text-left px-3 py-3 rounded-md text-base font-medium text-zinc-400 hover:text-white"
+              key={link.id}
+              onClick={() => handleNavClick(link.id)}
+              className={`block text-left px-3 py-3 rounded-md text-base font-medium transition-colors hover:bg-zinc-900 ${
+                activeTab === link.id ? "text-white bg-zinc-900" : "text-zinc-400 hover:text-white"
+              }`}
             >
-              ← Back to Landing Page
+              {link.label}
             </button>
-          )}
+          ))}
 
           <div className="pt-4 border-t border-zinc-900 flex flex-col gap-3 px-3">
             <button
               onClick={() => {
-                setShowPortal(!showPortal);
-                setIsOpen(false);
-              }}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded text-xs font-semibold border border-zinc-800 text-zinc-300 bg-zinc-900 hover:bg-zinc-800"
-            >
-              <LayoutDashboard className="w-4 h-4" />
-              {showPortal ? "Exit Portal" : "Client Portal Dashboard"}
-            </button>
-            <button
-              onClick={() => {
-                setShowPortal(false);
                 setIsOpen(false);
                 setTimeout(() => {
                   const element = document.getElementById("contact");

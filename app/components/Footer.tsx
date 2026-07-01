@@ -5,14 +5,14 @@ import { Shield } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#030303] border-t border-zinc-900 pt-16 pb-8 relative overflow-hidden">
+    <footer className="bg-[#030303] border-t border-gold-border pt-16 pb-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           
           {/* Logo & Pitch */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="flex items-center justify-center w-8 h-8 rounded bg-zinc-900 border border-zinc-800">
+              <div className="flex items-center justify-center w-8 h-8 rounded-none bg-zinc-900 border border-gold-border">
                 <Shield className="w-4 h-4 text-gold-main" />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
 
         {/* Legal and trademark bottom info */}
-        <div className="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-zinc-650 font-mono">
+        <div className="pt-8 border-t border-gold-border flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-zinc-650 font-mono">
           <p>© {new Date().getFullYear()} BetFlexx Technology Inc. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:underline">Privacy Shield</a>

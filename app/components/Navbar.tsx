@@ -46,9 +46,9 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         scrolled
-          ? "bg-[#04040d]/80 backdrop-blur-md border-b border-[#bd00ff]/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          ? "bg-zinc-950/95 border-b border-zinc-800 shadow-md"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -62,13 +62,11 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-tr from-[#bd00ff] via-[#00f0ff] to-[#ff007a] p-[1.5px] transition-transform duration-300 group-hover:scale-105">
-              <div className="w-full h-full bg-[#020205] rounded-lg flex items-center justify-center">
-                <Shield className="w-5 h-5 text-[#00f0ff] transition-colors group-hover:text-[#bd00ff]" />
-              </div>
+            <div className="flex items-center justify-center w-8 h-8 rounded bg-zinc-800 border border-zinc-700">
+              <Shield className="w-4 h-4 text-zinc-300" />
             </div>
-            <span className="text-2xl font-bold tracking-tight text-white">
-              Bet<span className="bg-gradient-to-r from-[#00f0ff] to-[#bd00ff] bg-clip-text text-transparent">Flexx</span>
+            <span className="text-xl font-bold tracking-tight text-white">
+              Bet<span className="text-zinc-400">Flexx</span>
             </span>
           </div>
 
@@ -79,13 +77,13 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
-                  className={`text-sm font-medium transition-colors hover:text-[#00f0ff] cursor-pointer ${
-                    activeTab === link.id ? "text-[#00f0ff] relative" : "text-zinc-400"
+                  className={`text-sm font-medium transition-colors hover:text-white cursor-pointer ${
+                    activeTab === link.id ? "text-white relative" : "text-zinc-400"
                   }`}
                 >
                   {link.label}
                   {activeTab === link.id && (
-                    <span className="absolute left-0 -bottom-1.5 w-full h-[2px] bg-gradient-to-r from-[#00f0ff] to-[#bd00ff]" />
+                    <span className="absolute left-0 -bottom-1.5 w-full h-[2px] bg-zinc-400" />
                   )}
                 </button>
               ))}
@@ -108,13 +106,13 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={() => setShowPortal(!showPortal)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-semibold border transition-all duration-200 cursor-pointer ${
                 showPortal
-                  ? "bg-[#bd00ff]/10 border-[#bd00ff] text-[#bd00ff] hover:bg-[#bd00ff]/20"
-                  : "bg-zinc-900/50 border-zinc-800 text-zinc-300 hover:border-zinc-700 hover:text-white"
+                  ? "bg-zinc-800 border-zinc-700 text-white"
+                  : "bg-transparent border-zinc-850 text-zinc-400 hover:border-zinc-800 hover:text-zinc-200"
               }`}
             >
-              <LayoutDashboard className="w-4 h-4" />
+              <LayoutDashboard className="w-3.5 h-3.5" />
               {showPortal ? "Exit Portal" : "Client Portal"}
             </button>
             <button
@@ -125,11 +123,9 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }, 100);
               }}
-              className="relative group overflow-hidden px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-[#bd00ff] to-[#00f0ff] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300 cursor-pointer"
+              className="px-4 py-2 rounded text-xs font-bold text-black bg-white hover:bg-zinc-200 transition-colors cursor-pointer flex items-center gap-1"
             >
-              <span className="relative z-10 flex items-center gap-1">
-                Consultation <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </span>
+              Consultation <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -148,7 +144,7 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
       {/* Mobile Menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-screen border-b border-[#bd00ff]/20 bg-[#04040d]" : "max-h-0 pointer-events-none"
+          isOpen ? "max-h-screen border-b border-zinc-800 bg-zinc-950" : "max-h-0 pointer-events-none"
         }`}
       >
         <div className="px-2 pt-2 pb-6 space-y-2 sm:px-3 flex flex-col items-stretch">
@@ -158,7 +154,7 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`block text-left px-3 py-3 rounded-md text-base font-medium transition-colors hover:bg-zinc-900 ${
-                  activeTab === link.id ? "text-[#00f0ff] bg-zinc-900/50" : "text-zinc-400 hover:text-white"
+                  activeTab === link.id ? "text-white bg-zinc-900" : "text-zinc-400 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -182,10 +178,10 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
                 setShowPortal(!showPortal);
                 setIsOpen(false);
               }}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-md text-base font-medium border border-zinc-800 text-zinc-300 bg-zinc-900/50 hover:bg-zinc-900"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded text-xs font-semibold border border-zinc-800 text-zinc-300 bg-zinc-900 hover:bg-zinc-800"
             >
               <LayoutDashboard className="w-4 h-4" />
-              {showPortal ? "Exit Client Portal" : "Client Portal Dashboard"}
+              {showPortal ? "Exit Portal" : "Client Portal Dashboard"}
             </button>
             <button
               onClick={() => {
@@ -196,7 +192,7 @@ export default function Navbar({ activeTab, setActiveTab, showPortal, setShowPor
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }, 100);
               }}
-              className="w-full py-3 text-center rounded-md text-base font-semibold text-white bg-gradient-to-r from-[#bd00ff] to-[#00f0ff]"
+              className="w-full py-3 text-center rounded text-xs font-bold text-black bg-white hover:bg-zinc-200"
             >
               Get Free Consultation
             </button>

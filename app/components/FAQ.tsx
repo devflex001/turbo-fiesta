@@ -39,48 +39,43 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 relative overflow-hidden bg-[#030309] border-t border-zinc-900">
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-[#00f0ff]/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="faq" className="py-24 bg-[#0c0c0e] border-t border-zinc-900">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-xs text-[#00f0ff] uppercase tracking-wider font-semibold">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>Got Questions?</span>
-          </div>
+        <div className="text-center mb-16 space-y-2">
+          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Support</span>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">Frequently Asked Questions</h2>
-          <p className="text-zinc-500 mt-2 text-sm sm:text-base">Everything you need to know about our flexible development and cyber operations.</p>
+          <p className="text-zinc-400 mt-2 text-xs sm:text-sm">Everything you need to know about our flexible development and cyber operations.</p>
         </div>
 
         {/* Accordions */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="cyber-card rounded-xl overflow-hidden border border-zinc-900 bg-[#090915]/50"
+                className="bg-zinc-900 border border-zinc-850 rounded overflow-hidden"
               >
                 <button
                   onClick={() => handleToggle(index)}
-                  className="w-full flex items-center justify-between p-5 text-left text-sm sm:text-base font-bold text-white hover:text-[#00f0ff] transition-colors focus:outline-none cursor-pointer"
+                  className="w-full flex items-center justify-between p-5 text-left text-xs sm:text-sm font-bold uppercase tracking-wider text-white hover:text-zinc-300 transition-colors focus:outline-none cursor-pointer"
                 >
                   <span>{faq.question}</span>
                   {isOpen ? (
-                    <ChevronUp className="w-5 h-5 text-[#bd00ff] shrink-0" />
+                    <ChevronUp className="w-4 h-4 text-zinc-300 shrink-0" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-zinc-500 shrink-0" />
+                    <ChevronDown className="w-4 h-4 text-zinc-500 shrink-0" />
                   )}
                 </button>
 
                 <div
-                  className={`transition-all duration-300 overflow-hidden ${
+                  className={`transition-all duration-200 overflow-hidden ${
                     isOpen ? "max-h-[300px] border-t border-zinc-950/50" : "max-h-0 pointer-events-none"
                   }`}
                 >
-                  <p className="p-5 text-xs sm:text-sm text-zinc-400 leading-relaxed bg-[#04040a]/40">
+                  <p className="p-5 text-xs text-zinc-450 leading-relaxed bg-[#09090b]/50">
                     {faq.answer}
                   </p>
                 </div>

@@ -42,19 +42,14 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-[#020205] border-t border-zinc-900">
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#00f0ff]/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="contact" className="py-24 bg-[#09090b] border-t border-zinc-900">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-xs text-[#bd00ff] uppercase tracking-wider font-semibold">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Consultation Planner</span>
-          </div>
+        <div className="text-center mb-16 space-y-2">
+          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Inquiries</span>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">Initiate Your Flex Contract</h2>
-          <p className="text-zinc-500 mt-2 text-sm sm:text-base">Tell us about your pipeline. We'll map a flexible resource budget that adapts to you.</p>
+          <p className="text-zinc-400 text-xs sm:text-sm">Tell us about your pipeline. We'll map a flexible resource budget that adapts to you.</p>
         </div>
 
         {/* Content Layout */}
@@ -62,46 +57,46 @@ export default function ContactForm() {
           
           {/* Left instructions block */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="cyber-card rounded-xl p-5 border-[#bd00ff]/20 bg-[#090915]/50">
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-4">Contract Guarantees</h3>
+            <div className="bg-zinc-900 border border-zinc-800 rounded p-5">
+              <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Contract Guarantees</h3>
               
               <ul className="space-y-4 text-xs text-zinc-400">
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4.5 h-4.5 text-[#00f0ff] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" />
                   <span>No locked permanent scopes—scale bandwidth as goals change.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4.5 h-4.5 text-[#bd00ff] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" />
                   <span>Comprehensive security audits bundled with code milestones.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4.5 h-4.5 text-[#39ff14] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" />
                   <span>100% remote workspace integration via our custom Slack/Portal.</span>
                 </li>
               </ul>
             </div>
 
-            <div className="cyber-card rounded-xl p-5 border-zinc-900 bg-[#090915]/30 flex items-center gap-4">
-              <Activity className="w-8 h-8 text-[#00f0ff] shrink-0 animate-pulse" />
+            <div className="bg-zinc-900 border border-zinc-800 rounded p-5 flex items-center gap-4">
+              <Activity className="w-6 h-6 text-zinc-455 shrink-0" />
               <div>
-                <h4 className="text-[11px] font-bold text-white uppercase tracking-wider">Average Response Time</h4>
-                <p className="text-xs text-zinc-500 mt-0.5">Bett's architecture committee reviews and responds in &lt; 4 hours.</p>
+                <h4 className="text-[10px] font-bold text-white uppercase tracking-widest">Average Response Time</h4>
+                <p className="text-[11px] text-zinc-500 mt-0.5">Bett's team reviews and responds in &lt; 4 hours.</p>
               </div>
             </div>
           </div>
 
           {/* Right Form panel */}
           <div className="lg:col-span-8">
-            <div className="cyber-card rounded-xl p-6 sm:p-8">
+            <div className="bg-zinc-900 border border-zinc-800 rounded p-6 sm:p-8">
               
               {isSubmitted ? (
                 <div className="text-center py-12 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-[#bd00ff]/10 border border-[#bd00ff] flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-8 h-8 text-[#00f0ff]" />
+                  <div className="w-12 h-12 rounded-full border border-zinc-700 flex items-center justify-center mx-auto text-white">
+                    <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Project Draft Received</h3>
-                    <p className="text-xs sm:text-sm text-zinc-500 mt-2 max-w-md mx-auto">
+                    <h3 className="text-lg font-bold text-white uppercase tracking-wider">Project Draft Received</h3>
+                    <p className="text-xs text-zinc-400 mt-2 max-w-md mx-auto">
                       Thank you, <strong className="text-white">{name}</strong>. Bett and our technical integration committee have received your system specifications. We will trace back to <strong className="text-white">{email}</strong> shortly.
                     </p>
                   </div>
@@ -116,8 +111,8 @@ export default function ContactForm() {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Bett Founder"
-                        className="w-full px-3.5 py-3 rounded-lg bg-zinc-950 border border-zinc-900 text-xs text-white focus:outline-none focus:border-[#bd00ff]"
+                        placeholder="Name"
+                        className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-zinc-700"
                       />
                     </div>
                     <div>
@@ -127,8 +122,8 @@ export default function ContactForm() {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="bett@betflexx.com"
-                        className="w-full px-3.5 py-3 rounded-lg bg-zinc-950 border border-zinc-900 text-xs text-white focus:outline-none focus:border-[#bd00ff]"
+                        placeholder="email@example.com"
+                        className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-zinc-700"
                       />
                     </div>
                   </div>
@@ -139,14 +134,14 @@ export default function ContactForm() {
                       type="text"
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
-                      placeholder="BetFlexx Tech"
-                      className="w-full px-3.5 py-3 rounded-lg bg-zinc-950 border border-zinc-900 text-xs text-white focus:outline-none focus:border-[#bd00ff]"
+                      placeholder="Company"
+                      className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-zinc-700"
                     />
                   </div>
 
                   {/* Project scope selectors */}
                   <div>
-                    <label className="text-[10px] text-zinc-500 uppercase font-semibold block mb-2.5">What needs integration? (Select all that apply)</label>
+                    <label className="text-[10px] text-zinc-550 uppercase font-semibold block mb-2.5">What needs integration? (Select all that apply)</label>
                     <div className="flex flex-wrap gap-2">
                       {servicesOption.map((option) => {
                         const isSelected = scope.includes(option.id);
@@ -155,10 +150,10 @@ export default function ContactForm() {
                             key={option.id}
                             type="button"
                             onClick={() => handleScopeToggle(option.id)}
-                            className={`px-3.5 py-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
+                            className={`px-3 py-1.5 rounded text-xs font-semibold border transition-all cursor-pointer ${
                               isSelected
-                                ? "bg-[#bd00ff]/10 border-[#bd00ff] text-[#bd00ff]"
-                                : "bg-zinc-950/40 border-zinc-900 text-zinc-400 hover:border-zinc-800"
+                                ? "bg-zinc-850 border-zinc-700 text-white"
+                                : "bg-zinc-950 border-transparent text-zinc-500 hover:border-zinc-800"
                             }`}
                           >
                             {option.label}
@@ -170,10 +165,10 @@ export default function ContactForm() {
 
                   {/* Budget Selector */}
                   <div>
-                    <label className="text-[10px] text-zinc-500 uppercase font-semibold block mb-2.5">Approximate Project Budget Range</label>
+                    <label className="text-[10px] text-zinc-550 uppercase font-semibold block mb-2.5">Approximate Project Budget Range</label>
                     <div className="grid grid-cols-3 gap-2.5">
                       {[
-                        { id: "flexible", label: "Flexible Retainer" },
+                        { id: "flexible", label: "Flexible Contract" },
                         { id: "mid", label: "$5K - $15K Setup" },
                         { id: "high", label: "$15K+ Custom Build" }
                       ].map((item) => (
@@ -181,10 +176,10 @@ export default function ContactForm() {
                           key={item.id}
                           type="button"
                           onClick={() => setBudget(item.id)}
-                          className={`py-2.5 rounded-lg text-[10px] font-bold border cursor-pointer ${
+                          className={`py-2 rounded text-[10px] font-bold border cursor-pointer ${
                             budget === item.id
-                              ? "bg-[#00f0ff]/10 border-[#00f0ff] text-[#00f0ff]"
-                              : "bg-zinc-950/40 border-zinc-900 text-zinc-500"
+                              ? "bg-zinc-850 border-zinc-700 text-white"
+                              : "bg-zinc-950 border-transparent text-zinc-500"
                           }`}
                         >
                           {item.label}
@@ -201,20 +196,17 @@ export default function ContactForm() {
                       value={details}
                       onChange={(e) => setDetails(e.target.value)}
                       placeholder="Outline your application endpoints, traffic projections, or cyber audit scope request here..."
-                      className="w-full px-3.5 py-3 rounded-lg bg-zinc-950 border border-zinc-900 text-xs text-white focus:outline-none focus:border-[#bd00ff] resize-none"
+                      className="w-full px-3.5 py-3 rounded bg-zinc-950 border border-zinc-850 text-xs text-white focus:outline-none focus:border-[#bd00ff] resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#bd00ff] via-[#7b2cbf] to-[#00f0ff] hover:shadow-[0_0_20px_rgba(189,0,255,0.3)] transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                    className="w-full py-3.5 rounded text-xs font-bold text-black bg-white hover:bg-zinc-200 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     {isSubmitting ? (
-                      <>
-                        <span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
-                        Synchronizing pipeline data...
-                      </>
+                      <>Processing proposal details...</>
                     ) : (
                       <>
                         Request Custom Proposal

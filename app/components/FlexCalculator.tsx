@@ -14,7 +14,7 @@ interface ServiceItem {
 
 export default function FlexCalculator() {
   const [selectedServices, setSelectedServices] = useState<string[]>(["dev_web"]);
-  const [teamScale, setTeamScale] = useState(2); // sliders
+  const [teamScale, setTeamScale] = useState(2);
   const [supportTier, setSupportTier] = useState<"standard" | "priority" | "mission_critical">("priority");
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
   const [showEstimateDetails, setShowEstimateDetails] = useState(false);
@@ -38,7 +38,6 @@ export default function FlexCalculator() {
     }
   };
 
-  // Pricing Logic
   const calculateCosts = () => {
     let oneTimeSetup = 0;
     let baseMonthly = 0;
@@ -50,19 +49,16 @@ export default function FlexCalculator() {
       }
     });
 
-    // Support Tier Multipliers
     let supportMultiplier = 1.0;
     if (supportTier === "priority") supportMultiplier = 1.3;
     if (supportTier === "mission_critical") supportMultiplier = 1.7;
 
-    // Team Scale Multiplier (e.g. number of dedicated devs/analysts on standby)
     const scaleMultiplier = 1.0 + (teamScale - 1) * 0.35;
 
     let finalMonthly = baseMonthly * supportMultiplier * scaleMultiplier;
 
-    // Yearly discount
     if (billingCycle === "yearly") {
-      finalMonthly = finalMonthly * 0.85; // 15% discount
+      finalMonthly = finalMonthly * 0.85;
     }
 
     return {
@@ -74,23 +70,17 @@ export default function FlexCalculator() {
   const { setup, monthly } = calculateCosts();
 
   return (
-    <section id="calculator" className="py-24 relative overflow-hidden bg-[#020205] border-t border-zinc-900">
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#bd00ff]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#00f0ff]/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="calculator" className="py-24 bg-[#09090b] border-t border-zinc-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-xs text-zinc-400 mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#bd00ff]" />
-            <span>Core Value: High Flexibility</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <div className="max-w-3xl mb-16 space-y-3">
+          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Self Service Setup</span>
+          <h2 className="text-3xl font-extrabold text-white tracking-tight">
             Flexible Service Configurator
           </h2>
-          <p className="text-zinc-500 mt-4 text-sm sm:text-base">
-            No rigid, overpriced flat-rate contracts. Customize your BetFlexx solutions by selecting exactly the digital assets, cyber shield strength, and engineering capacity you require.
+          <p className="text-zinc-400 text-sm">
+            No rigid, fixed-rate contracts. Customize your BetFlexx solutions by selecting exactly the digital assets and engineering capacity you require.
           </p>
         </div>
 
@@ -101,9 +91,9 @@ export default function FlexCalculator() {
           <div className="lg:col-span-8 space-y-6">
             
             {/* Step 1: Select services */}
-            <div className="cyber-card rounded-xl p-5 sm:p-6">
-              <h3 className="text-base font-bold text-white mb-4 flex items-center gap-2">
-                <span className="flex items-center justify-center w-6 h-6 rounded bg-[#bd00ff]/20 text-[#bd00ff] text-xs font-mono">01</span>
+            <div className="bg-zinc-900 border border-zinc-800 rounded p-6">
+              <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-zinc-400 text-xs font-mono">01</span>
                 Select Core Services
               </h3>
               
@@ -114,28 +104,28 @@ export default function FlexCalculator() {
                     <div
                       key={service.id}
                       onClick={() => handleToggleService(service.id)}
-                      className={`p-4 rounded-xl border transition-all duration-200 cursor-pointer select-none flex flex-col justify-between ${
+                      className={`p-4 rounded border transition-all cursor-pointer select-none flex flex-col justify-between ${
                         isChecked
-                          ? "bg-[#bd00ff]/5 border-[#bd00ff]/50 shadow-[0_0_10px_rgba(189,0,255,0.05)]"
-                          : "bg-zinc-950/40 border-zinc-900 hover:border-zinc-800 hover:bg-zinc-900/20"
+                          ? "bg-zinc-800 border-zinc-700"
+                          : "bg-zinc-950/40 border-zinc-950 hover:border-zinc-800 hover:bg-zinc-900/20"
                       }`}
                     >
                       <div>
                         <div className="flex items-center justify-between gap-2">
-                          <span className="font-bold text-sm text-white">{service.name}</span>
+                          <span className="font-bold text-xs uppercase tracking-wider text-white">{service.name}</span>
                           <input
                             type="checkbox"
                             checked={isChecked}
                             onChange={() => {}} // handled by div click
-                            className="w-4 h-4 rounded accent-[#bd00ff]"
+                            className="w-4 h-4 rounded accent-zinc-500"
                           />
                         </div>
                         <p className="text-xs text-zinc-500 mt-2 leading-relaxed">{service.description}</p>
                       </div>
                       
-                      <div className="flex items-center justify-between border-t border-zinc-900/50 pt-3 mt-4 text-[11px]">
+                      <div className="flex items-center justify-between border-t border-zinc-800/50 pt-3 mt-4 text-[10px]">
                         <span className="text-zinc-500">Setup: <strong className="text-zinc-300">${service.setupPrice}</strong></span>
-                        <span className="text-zinc-500">Sub: <strong className="text-[#bd00ff]">${service.basePrice}/mo</strong></span>
+                        <span className="text-zinc-500">Subscription: <strong className="text-white">${service.basePrice}/mo</strong></span>
                       </div>
                     </div>
                   );
@@ -147,21 +137,20 @@ export default function FlexCalculator() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
               {/* Dedicated resource scale */}
-              <div className="cyber-card rounded-xl p-5 sm:p-6 flex flex-col justify-between">
+              <div className="bg-zinc-900 border border-zinc-800 rounded p-6 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-base font-bold text-white mb-2 flex items-center gap-2">
-                    <span className="flex items-center justify-center w-6 h-6 rounded bg-[#00f0ff]/20 text-[#00f0ff] text-xs font-mono">02</span>
-                    Scale Standby Engineers
+                  <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
+                    <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-zinc-400 text-xs font-mono">02</span>
+                    Scale Dedicated Crew
                   </h3>
                   <p className="text-xs text-zinc-500 mb-6">
-                    Adjust the number of allocated developers/security operators dedicated to your systems.
+                    Adjust the number of developers/operators dedicated to your systems.
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center text-xs">
-                    <span className="text-zinc-400">Team Size: <strong>{teamScale} Dedicated Support Crew</strong></span>
-                    <span className="text-[#00f0ff] font-bold">x{((1.0 + (teamScale - 1) * 0.35)).toFixed(2)} Multiplier</span>
+                    <span className="text-zinc-400">Team Size: <strong>{teamScale} Support Crew</strong></span>
                   </div>
                   <input
                     type="range"
@@ -170,25 +159,25 @@ export default function FlexCalculator() {
                     step="1"
                     value={teamScale}
                     onChange={(e) => setTeamScale(Number(e.target.value))}
-                    className="w-full h-1.5 bg-zinc-900 rounded-lg appearance-none cursor-pointer accent-[#00f0ff]"
+                    className="w-full h-1 bg-zinc-950 rounded-lg appearance-none cursor-pointer accent-zinc-500"
                   />
-                  <div className="flex justify-between text-[10px] text-zinc-600 font-mono">
-                    <span>1 (Shared Support)</span>
-                    <span>3 (Highly Responsive)</span>
-                    <span>5 (Full Enterprise SLA)</span>
+                  <div className="flex justify-between text-[10px] text-zinc-650 font-mono">
+                    <span>1 (Shared)</span>
+                    <span>3 (Standby)</span>
+                    <span>5 (Dedicated SLA)</span>
                   </div>
                 </div>
               </div>
 
               {/* Service Level Agreement */}
-              <div className="cyber-card rounded-xl p-5 sm:p-6 flex flex-col justify-between">
+              <div className="bg-zinc-900 border border-zinc-800 rounded p-6 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-base font-bold text-white mb-2 flex items-center gap-2">
-                    <span className="flex items-center justify-center w-6 h-6 rounded bg-[#39ff14]/20 text-[#39ff14] text-xs font-mono">03</span>
+                  <h3 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
+                    <span className="flex items-center justify-center w-5 h-5 rounded bg-zinc-800 text-zinc-400 text-xs font-mono">03</span>
                     Support & SLA Tier
                   </h3>
                   <p className="text-xs text-zinc-500 mb-6">
-                    Select response window severity guarantees for technical support and system failures.
+                    Select response window guarantees for system tasks.
                   </p>
                 </div>
 
@@ -196,20 +185,20 @@ export default function FlexCalculator() {
                   {[
                     { id: "standard", name: "Standard (24h response)", desc: "Next business day support responses" },
                     { id: "priority", name: "Priority (4h response)", desc: "Priority support slot queue and monitoring" },
-                    { id: "mission_critical", name: "Mission Critical (1h response)", desc: "Emergency hotline + direct phone routing to Bett & senior tech crew" }
+                    { id: "mission_critical", name: "Mission Critical (1h response)", desc: "Emergency hotline + direct phone routing" }
                   ].map((tier) => (
                     <button
                       key={tier.id}
                       onClick={() => setSupportTier(tier.id as any)}
-                      className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs flex items-center justify-between cursor-pointer ${
+                      className={`w-full text-left p-2.5 rounded border transition-all text-xs flex items-center justify-between cursor-pointer ${
                         supportTier === tier.id
-                          ? "bg-[#39ff14]/5 border-[#39ff14]/40 text-white"
-                          : "bg-zinc-950/30 border-zinc-900 text-zinc-400 hover:border-zinc-800"
+                          ? "bg-zinc-800 border-zinc-700 text-white"
+                          : "bg-zinc-950/30 border-transparent text-zinc-400 hover:border-zinc-800"
                       }`}
                     >
                       <div>
                         <div className="font-bold">{tier.name}</div>
-                        <div className="text-[10px] text-zinc-500 mt-0.5">{tier.desc}</div>
+                        <div className="text-[10px] text-zinc-550 mt-0.5">{tier.desc}</div>
                       </div>
                     </button>
                   ))}
@@ -222,60 +211,57 @@ export default function FlexCalculator() {
 
           {/* Pricing Calculation Display */}
           <div className="lg:col-span-4 flex">
-            <div className="cyber-card rounded-xl p-6 flex flex-col justify-between w-full border-[#00f0ff]/30 shadow-[0_0_30px_rgba(0,240,255,0.05)] relative overflow-hidden bg-gradient-to-b from-[#090915] to-[#04040a]">
+            <div className="bg-zinc-900 border border-zinc-800 rounded p-6 flex flex-col justify-between w-full relative overflow-hidden">
               
-              {/* Radial gradient background */}
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#00f0ff]/10 rounded-full blur-3xl pointer-events-none" />
-
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-base font-bold text-white uppercase tracking-wider">Solution Estimate</h3>
-                  <p className="text-xs text-zinc-500 mt-1">Calculated dynamically based on your custom flex-scope.</p>
+                  <h3 className="text-xs font-bold text-white uppercase tracking-widest">Scope Estimate</h3>
+                  <p className="text-[11px] text-zinc-550 mt-1">Calculated based on your selection.</p>
                 </div>
 
                 {/* Billing Toggles */}
-                <div className="bg-zinc-950 p-1.5 rounded-lg flex border border-zinc-900">
+                <div className="bg-zinc-950 p-1 rounded flex border border-zinc-850">
                   <button
                     onClick={() => setBillingCycle("monthly")}
-                    className={`flex-1 text-center py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
-                      billingCycle === "monthly" ? "bg-zinc-900 text-[#00f0ff] shadow-sm" : "text-zinc-500 hover:text-zinc-300"
+                    className={`flex-grow text-center py-1 rounded text-xs font-bold transition-all cursor-pointer ${
+                      billingCycle === "monthly" ? "bg-zinc-900 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
                     }`}
                   >
-                    Monthly billing
+                    Monthly
                   </button>
                   <button
                     onClick={() => setBillingCycle("yearly")}
-                    className={`flex-1 text-center py-1.5 rounded text-xs font-bold transition-all cursor-pointer relative ${
-                      billingCycle === "yearly" ? "bg-zinc-900 text-[#00f0ff] shadow-sm" : "text-zinc-500 hover:text-zinc-300"
+                    className={`flex-grow text-center py-1 rounded text-xs font-bold transition-all cursor-pointer relative ${
+                      billingCycle === "yearly" ? "bg-zinc-900 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
                     }`}
                   >
-                    Annual billing
-                    <span className="absolute -top-2.5 -right-1.5 bg-[#bd00ff] text-white text-[8px] font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-wider scale-90">
+                    Yearly
+                    <span className="absolute -top-2 -right-1 bg-zinc-800 text-white text-[8px] px-1 py-0.5 rounded font-bold scale-90">
                       -15%
                     </span>
                   </button>
                 </div>
 
                 {/* Setup Cost (One-time) */}
-                <div className="border-b border-zinc-900 pb-4">
-                  <span className="text-xs text-zinc-500 block uppercase tracking-wider font-semibold">One-time Setup & Integration</span>
+                <div className="border-b border-zinc-800 pb-4">
+                  <span className="text-[10px] text-zinc-550 block uppercase tracking-wider font-semibold">One-time Setup Cost</span>
                   <div className="flex items-baseline mt-1">
-                    <span className="text-2xl font-bold text-white">${setup.toLocaleString()}</span>
+                    <span className="text-xl font-bold text-white">${setup.toLocaleString()}</span>
                     <span className="text-xs text-zinc-500 ml-1.5">USD</span>
                   </div>
                 </div>
 
                 {/* Subscription Cost (Monthly / Yearly) */}
-                <div className="border-b border-zinc-900 pb-4">
-                  <span className="text-xs text-zinc-500 block uppercase tracking-wider font-semibold">
-                    {billingCycle === "monthly" ? "Monthly Subscription" : "Annual Plan Subscription"}
+                <div className="border-b border-zinc-800 pb-4">
+                  <span className="text-[10px] text-zinc-550 block uppercase tracking-wider font-semibold">
+                    {billingCycle === "monthly" ? "Monthly Subscription" : "Subscription (billed yearly)"}
                   </span>
                   <div className="flex items-baseline mt-1">
-                    <span className="text-4xl font-extrabold bg-gradient-to-r from-white via-zinc-100 to-[#00f0ff] bg-clip-text text-transparent text-glow-cyan">
+                    <span className="text-3xl font-extrabold text-white">
                       ${monthly.toLocaleString()}
                     </span>
                     <span className="text-xs text-zinc-500 ml-1.5">
-                      USD / {billingCycle === "monthly" ? "mo" : "mo, billed yearly"}
+                      USD / mo
                     </span>
                   </div>
                 </div>
@@ -284,29 +270,25 @@ export default function FlexCalculator() {
                 <div>
                   <button
                     onClick={() => setShowEstimateDetails(!showEstimateDetails)}
-                    className="text-xs text-[#00f0ff] hover:underline flex items-center gap-1.5 cursor-pointer"
+                    className="text-[11px] text-zinc-400 hover:underline flex items-center gap-1.5 cursor-pointer"
                   >
-                    {showEstimateDetails ? "Hide configurations breakdown" : "Show configurations breakdown"}
+                    {showEstimateDetails ? "Hide breakdown" : "Show breakdown"}
                   </button>
                   {showEstimateDetails && (
-                    <div className="mt-3 bg-black/60 border border-zinc-900 rounded p-3 text-[10px] text-zinc-400 space-y-1.5 max-h-40 overflow-y-auto">
+                    <div className="mt-3 bg-zinc-950 border border-zinc-850 rounded p-3 text-[10px] text-zinc-500 space-y-1.5 max-h-40 overflow-y-auto font-mono">
                       <div className="flex justify-between">
-                        <span>Selected items ({selectedServices.length}):</span>
-                        <span className="text-white">
+                        <span>Items:</span>
+                        <span className="text-zinc-300 text-right truncate max-w-[150px]">
                           {selectedServices.map(id => servicesList.find(s => s.id === id)?.name).join(", ")}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span>SLA multiplier:</span>
-                        <span className="text-white">{supportTier === "standard" ? "1.0x" : supportTier === "priority" ? "1.3x" : "1.7x"}</span>
+                        <span>SLA:</span>
+                        <span className="text-zinc-300">{supportTier === "standard" ? "1.0x" : supportTier === "priority" ? "1.3x" : "1.7x"}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Standby resources:</span>
-                        <span className="text-white">{teamScale} crew members</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Contract Cycle discount:</span>
-                        <span className="text-white">{billingCycle === "yearly" ? "15%" : "0%"}</span>
+                        <span>Crew:</span>
+                        <span className="text-zinc-300">{teamScale} members</span>
                       </div>
                     </div>
                   )}
@@ -314,23 +296,22 @@ export default function FlexCalculator() {
               </div>
 
               {/* Consultation / Checkout mockup CTA */}
-              <div className="pt-6 mt-6 border-t border-zinc-900 space-y-3">
+              <div className="pt-6 mt-6 border-t border-zinc-800 space-y-3">
                 <button
                   onClick={() => {
                     const contactForm = document.getElementById("contact");
                     if (contactForm) {
                       contactForm.scrollIntoView({ behavior: "smooth" });
-                      // Pre-fill setup or custom text if needed
                     }
                   }}
-                  className="w-full py-3.5 rounded-xl text-xs font-bold text-center text-[#020205] bg-[#00f0ff] hover:bg-[#00d0dd] hover:shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5"
+                  className="w-full py-3.5 rounded text-xs font-bold text-center text-black bg-white hover:bg-zinc-200 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                 >
-                  Book My Custom Integration
+                  Book Configured Proposal
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <div className="flex justify-center items-center gap-1.5 text-[10px] text-zinc-500">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#39ff14]" />
-                  <span>Configured details will be pre-loaded into request</span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
+                  <span>Configuration specifications will be compiled</span>
                 </div>
               </div>
 

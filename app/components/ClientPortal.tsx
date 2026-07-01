@@ -334,8 +334,8 @@ export default function ClientPortal() {
                     </div>
                   </div>
 
-                  {{/* Payment Info Card */}
-                  showPayNotice && (
+                  {/* Payment Info Card */}
+                  {showPayNotice && (
                     <div className="p-3 bg-zinc-950 border border-zinc-850 rounded text-white font-mono text-xs flex items-center gap-2 animate-bounce">
                       <AlertCircle className="w-4 h-4 text-zinc-400" />
                       <span>Coming soon</span>

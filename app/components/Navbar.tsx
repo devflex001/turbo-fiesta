@@ -91,7 +91,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                 const element = document.getElementById("contact");
                 if (element) element.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-4 py-2 rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b] transition-colors cursor-pointer flex items-center gap-1"
+              className="btn-gold-solid px-4 py-2 text-[10px] cursor-pointer flex items-center gap-1.5"
             >
               Consultation <ArrowRight className="w-3.5 h-3.5" />
             </button>
@@ -137,7 +137,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }, 100);
               }}
-              className="w-full py-3 text-center rounded text-xs font-bold text-black bg-gold-main hover:bg-[#b08e4b]"
+              className="btn-gold-solid w-full py-3 text-[10px]"
             >
               Get Free Consultation
             </button>

@@ -50,12 +50,63 @@ body {
 .cyber-card {
   background: #0d0d0e;
   border: 1px solid #1b1b1d;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cyber-card:hover {
   border-color: #c5a059;
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.08);
+  transform: translateY(-2px);
 }
+
+/* Premium Gold Text Gradients */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f6e0a4 0%, #c5a059 50%, #8e6f32 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium Gold Buttons - Sharp corners, uppercase, tracking-widest */
+.btn-gold-solid {
+  background-color: #c5a059;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  border-radius: 0px;
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.22);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-gold-solid:hover {
+  background-color: #d4b56f;
+  box-shadow: 0 0 25px rgba(197, 160, 89, 0.4);
+}
+
+.btn-gold-outline {
+  background-color: transparent;
+  color: #c5a059;
+  border: 1px solid #c5a059;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  border-radius: 0px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-gold-outline:hover {
+  background-color: rgba(197, 160, 89, 0.05);
+  border-color: #f6e0a4;
+  color: #f6e0a4;
+}
+
+
 
 
 
